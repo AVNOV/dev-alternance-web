@@ -10,7 +10,7 @@ React est une bibliothèque JavaScript pour créer des interfaces utilisateur.
 
 ## Installation
 
-Avant de pouvoir installer React, plusieurs module doivent être télécharger et installer via Homebrew :
+Avant de pouvoir installer React, plusieurs modules doivent être téléchargé et installé via Homebrew :
 
  
 
