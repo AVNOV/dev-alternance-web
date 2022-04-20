@@ -40,9 +40,9 @@ node -v
 
 Vous pouvez trouver la documentation officiel de React [sur cette page web](https://reactjs.org/).  
 
-Bien se mettre à jour sur la page [Getting Started in react](https://reactjs.org/docs/getting-started.html).
+Bien se mettre à jour sur cette page [ici](https://reactjs.org/docs/getting-started.html), si vous êtes rouillé en react js.
 
-The documentation is divided into several sections:
+La documentation est divisé en plusieurs sections:
 
 * [Tutoriel](https://reactjs.org/tutorial/tutorial.html)
 * [Concept principaux](https://reactjs.org/docs/hello-world.html)
