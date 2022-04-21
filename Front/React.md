@@ -10,7 +10,7 @@ React est une bibliothèque JavaScript pour créer des interfaces utilisateur.
 
 ## Installation
 
-Avant de pouvoir installer React, plusieurs module doivent être télécharger et installer via Homebrew :
+Avant de pouvoir installer React, plusieurs modules doivent être téléchargé et installé via Homebrew :
 
  
 
@@ -69,6 +69,20 @@ root.render(<HelloMessage name="Taylor" />);
 Cet exemple affichera "Hello Taylor" dans un conteneur sur la page.
 
 Vous remarquerez que nous avons utilisé une syntaxe de type HTML ; [nous l'appelons JSX](https://reactjs.org/docs/introducing-jsx.html) . JSX n'est pas nécessaire pour utiliser React, mais cela rend le code plus lisible et l'écriture donne l'impression d'écrire du HTML. Si vous utilisez React comme `<script>`balise, lisez [cette section](https://reactjs.org/docs/add-react-to-a-website.html#optional-try-react-with-jsx) sur l'intégration de JSX ; sinon, les chaînes d' [outils JavaScript recommandées](https://reactjs.org/docs/create-a-new-react-app.html) le gèrent automatiquement.
+
+## Projet React
+
+Création d'un projet React :
+```bash
+npm create-react-app appname
+```
+
+Puis éxecution :
+```bash
+cd appname
+npm start
+```
+Cela ouvrira l'application React nouvellement créée dans un nouvel onglet de notre navigateur avec l'URL http://localhost:3000 . Si le port 3000 est occupé, l'application s'ouvrira dans n'importe quel autre port disponible.
 
 ### License
 
