@@ -32,7 +32,7 @@ Utiliser la CLI nécessite des connaissances préalables en Node.js et les outil
 
 Si vous avez besoin de compiler des templates en temps réel (par ex. : passer une chaîne de caractère à l’option  `template`, ou monter un élément en vous servant de sa représentation HTML dans le DOM comme template) vous aurez besoin du compilateur et donc du build complet :
 
-```
+```javascript
 // ceci a besoin d'un compilateur
 new Vue({
   template: '<div>{{ hi }}</div>'
