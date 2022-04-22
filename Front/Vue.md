@@ -1,4 +1,4 @@
-﻿![Vue logo](https://camo.githubusercontent.com/c8f91d18976e27123643a926a2588b8d931a0292fd0b6532c3155379e8591629/68747470733a2f2f7675656a732e6f72672f696d616765732f6c6f676f2e706e67)](https://vuejs.org/)
+﻿![Vue logo](https://camo.githubusercontent.com/c8f91d18976e27123643a926a2588b8d931a0292fd0b6532c3155379e8591629/68747470733a2f2f7675656a732e6f72672f696d616765732f6c6f676f2e706e67)
 [![Downloads](https://camo.githubusercontent.com/a59bbe40866f28928406c8775963465180a4c338b16a0122d327a6cdaf8fbc08/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f646d2f7675652e7376673f73616e6974697a653d74727565)](https://npmcharts.com/compare/vue?minimal=true)  [![Version](https://camo.githubusercontent.com/6a1ee221c99c800e8d3b104c99033afa11d84c16f58e77632d21ed9d2370f49d/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f7675652e7376673f73616e6974697a653d74727565)](https://www.npmjs.com/package/vue)  [![License](https://camo.githubusercontent.com/9cd15767dc45dd1a09a15c0751f65623b4040bc28f13875a3803250e3d95e167/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f6c2f7675652e7376673f73616e6974697a653d74727565)](https://fr.wikipedia.org/wiki/Licence_MIT)
 
 Vue est un framework JavaScript pour la création d'interfaces utilisateur. Il s'appuie sur les standards HTML, CSS et JavaScript et fournit un modèle de programmation déclaratif et basé sur des composants qui vous aide à développer efficacement des interfaces utilisateur, qu'elles soient simples ou complexes.
@@ -32,7 +32,7 @@ Utiliser la CLI nécessite des connaissances préalables en Node.js et les outil
 
 Si vous avez besoin de compiler des templates en temps réel (par ex. : passer une chaîne de caractère à l’option  `template`, ou monter un élément en vous servant de sa représentation HTML dans le DOM comme template) vous aurez besoin du compilateur et donc du build complet :
 
-```
+```javascript
 // ceci a besoin d'un compilateur
 new Vue({
   template: '<div>{{ hi }}</div>'
