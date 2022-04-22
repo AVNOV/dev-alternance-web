@@ -38,7 +38,6 @@ new Vue({
   template: '<div>{{ hi }}</div>'
 })
 
-// Good tech
 // ceci n'en a pas besoin
 new Vue({
   render (h) {
