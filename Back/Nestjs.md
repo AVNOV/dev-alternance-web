@@ -15,6 +15,15 @@ Nest est un framework permettant de créer des applications côté serveur [Node
 
 Sous le capot, Nest utilise [Express](https://expressjs.com/) , mais offre également une compatibilité avec un large éventail d'autres bibliothèques, comme par exemple [Fastify](https://github.com/fastify/fastify) , permettant une utilisation facile de la myriade de plugins tiers disponibles.
 
+-   Nest.js fonctionne parfaitement sous forme de monolithe et sous forme de micro-service.
+-   Il est simple à utiliser, rapide à apprendre et facile à installer.
+-   Il s’appuie sur TypeScript, mais utilisable en JavaScript.
+-   Une interface en ligne de commande (CLI) complète pour stimuler la productivité et faciliter le développement.
+-   La prise en charge native de dizaines de modules essentiels comme TypeORM, Mongoose, GraphQL, Logging, Validation, Caching, Guards, WebSockets, etc.
+-   Applications très simples à tester
+-   Une excellente documentation 🔥
+-   Une architecture simple et scalable pour les gros serveurs.
+
 ## Philosophie
 
 Ces dernières années, grâce à Node.js, JavaScript est devenu la "lingua franca" du web pour les applications front et backend, donnant lieu à des projets impressionnants comme [Angular](https://angular.io/) , [React](https://github.com/facebook/react) et [Vue](https://github.com/vuejs/vue) qui améliorent la productivité des développeurs et permettent la construction d'applications rapides et backend. applications frontales testables et extensibles. Cependant, côté serveur, bien qu'il existe de nombreuses bibliothèques, aides et outils superbes pour Node, aucun d'entre eux ne résout efficacement le problème principal - l'architecture.
