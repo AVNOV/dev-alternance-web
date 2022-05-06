@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json())
 
 // Route to get all vehicules from vehicule
-app.get("/getVehicule", (req,res) => {
+app.get("/getVehicules", (req,res) => {
     db.query("SELECT * FROM vehicule", (err, result) => {
         if(err) {
             console.log(err)
