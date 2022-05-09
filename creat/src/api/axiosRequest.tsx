@@ -1,21 +1,20 @@
-import VehiculeList from "./component/vehiculeComponents/vehiculeList";
+import axios from 'axios';
 
-function App() {
-  
-  return (
-    <div>
-      <VehiculeList />
-    </div>
-  );
-}
+type Vehicule = {
+  id: number;
+  immatriculation: string;
+  marque: string;
+  modele: string;
+};
 
-export default App;
+type GetVehiculeResponse = {
+  data: Vehicule[];
+};
 
-/*
 async function getVehicules() {
   try {
     // 👇️ const data: GetUsersResponse
-    const { data } = await axios.get<GetVehiculeResponse>(
+    const { data, status } = await axios.get<GetVehiculeResponse>(
       'http://localhost:3002/getVehicules',
       {
         headers: {
@@ -23,6 +22,12 @@ async function getVehicules() {
         },
       },
     );
+
+    //console.log(JSON.stringify(data, null, 4));
+
+    // 👇️ "response status is: 200"
+    console.log('response status is: ', status);
+
     return data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -35,6 +40,4 @@ async function getVehicules() {
   }
 }
 
-const res = getVehicules();
-console.log(JSON.stringify(res, null, 4));
-*/
+getVehicules();
