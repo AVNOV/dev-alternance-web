@@ -34,7 +34,6 @@ export function DailyActivityList() {
         response = await response.json();
         if (response) {
             dispatch(setDailyActivity(response));
-            console.log(response);
         }
     };
 
@@ -44,7 +43,6 @@ export function DailyActivityList() {
         response = await response.json();
         if (response) {
             dispatch(setVehiculeActivity(response));
-            console.log(response);
         }
     };
 
@@ -52,11 +50,10 @@ export function DailyActivityList() {
         let response: any = await fetch('http://localhost:3002/getVehicules');
         response = await response.json();
         if (response) {
-            dispatch(setVehicule(response));
-            console.log(response);
         }
     };
     useEffect(() => {
+            console.log("Info Vehicule:" + JSON.stringify(vehicule));
             FetchVehicules();
     }, []);
 
@@ -86,6 +83,7 @@ export function DailyActivityList() {
                                 <strong>activité id</strong>
                             </TableCell>
                             <TableCell>
+                                <p>test</p>
                                 <strong>vehicule activité id</strong>
                             </TableCell>
                             <TableCell>
@@ -132,60 +130,60 @@ export function DailyActivityList() {
                     }
                     </TableBody>
                 </Table>
-            </TableContainer>
-            <TableContainer sx={{ maxHeight: 750 }}>
-            <h3 color='orange'>Activité Vehicule</h3>
-                <Table stickyHeader aria-label="sticky table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>
-                            <strong>Vehicule activité id</strong>
-                            </TableCell>
-                            <TableCell>
-                            <strong>Vehicule id</strong>
-                            </TableCell>
-                            <TableCell>
-                            <strong>km depart</strong>
-                            </TableCell>
-                            <TableCell>
-                            <strong>km arrivé</strong>
-                            </TableCell>
-                            <TableCell>
-                            <strong>km jour</strong>
-                            </TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>  
-                    { 
-                        vehiculeActivity?.map((vehiculeActivityMap: { vehicule_activite_id: number; vehicule_id: number; km_depart: number; km_arrive: number; km_jour: number; }) => {
-                            const {
-                                vehicule_activite_id,
-                                vehicule_id,
-                                km_depart,
-                                km_arrive,
-                                km_jour
-                            } = vehiculeActivityMap;
-                          return (
-                            <TableRow key={vehicule_activite_id} hover role="checkbox">
+                </TableContainer>
+                <TableContainer sx={{ maxHeight: 750 }}>
+                <h3 color='orange'>Activité Vehicule</h3>
+                    <Table stickyHeader aria-label="sticky table">
+                        <TableHead>
+                            <TableRow>
                                 <TableCell>
-                                    {vehicule_activite_id}
+                                    <strong>Vehicule activité id</strong>
                                 </TableCell>
                                 <TableCell>
-                                    {vehicule_id}
+                                    <strong>Vehicule id</strong>
                                 </TableCell>
                                 <TableCell>
-                                    {km_depart}
+                                    <strong>km depart</strong>
                                 </TableCell>
                                 <TableCell>
-                                    {km_arrive}
+                                    <strong>km arrivé</strong>
                                 </TableCell>
                                 <TableCell>
-                                    {km_jour}
+                                    <strong>km jour</strong>
                                 </TableCell>
                             </TableRow>
-                          );
-                        })
-                    }
+                        </TableHead>
+                    <TableBody>  
+                        { 
+                            vehiculeActivity?.map((vehiculeActivityMap: { vehicule_activite_id: number; vehicule_id: number; km_depart: number; km_arrive: number; km_jour: number; }) => {
+                                const {
+                                    vehicule_activite_id,
+                                    vehicule_id,
+                                    km_depart,
+                                    km_arrive,
+                                    km_jour
+                                } = vehiculeActivityMap;
+                              return (
+                                <TableRow key={vehicule_activite_id} hover role="checkbox">
+                                    <TableCell>
+                                        {vehicule_activite_id}
+                                    </TableCell>
+                                    <TableCell>
+                                        {vehicule_id}
+                                    </TableCell>
+                                    <TableCell>
+                                        {km_depart}
+                                    </TableCell>
+                                    <TableCell>
+                                        {km_arrive}
+                                    </TableCell>
+                                    <TableCell>
+                                        {km_jour}
+                                    </TableCell>
+                                </TableRow>
+                              );
+                            })
+                        }
                     </TableBody>
                 </Table>
             </TableContainer>

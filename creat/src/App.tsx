@@ -9,6 +9,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import ClippedDrawer from './components/Template/ClippedDrawer';
 import MiniDrawer from './components/Template/ModularClippedDrawer';
 import LoadingSpinner from './components/Spinner/LoadingSpinner';
+import TableList from './components/TableLists';
 
 function App() {
   
@@ -29,8 +30,7 @@ function App() {
           <Router>
          <Routes>
             <Route path='/login' element={<><Login /><Logout /><Profile /></>} /> 
-            <Route path="/clipped" element={<><ClippedDrawer /></>} />
-			<Route path="/mini" element={<><MiniDrawer /></>} />
+			      <Route path="/" element={<><MiniDrawer /><TableList/></>} />
           </Routes>
           </Router>
         </Provider>

@@ -169,7 +169,7 @@ app.delete('/deleteVehiculeActivity/:id',(req,res) => {
 app.get("/getVehicules", (req,res) => {
 
     dbExploit.query("SELECT * FROM vehicule", (err, result) => {
-        if(err) {
+        if (err) {
             console.log(err)
         } 
         res.send(result)
@@ -195,11 +195,21 @@ app.post('/createVehicule', (req, res) => {
     const marque = req.body.marque;
 
     dbExploit.query("INSERT INTO vehicule (modele, marque, immatriculation) VALUES (?,?,?)",[modele,marque,immatriculation], (err,result) => {
-        if(err) {
+        if (err) {
             console.log(err)
         } 
         console.log(result)
     });   
+})
+// Route to get all vehicule table immatriculation
+app.get('/getImmat', (req, res) => {
+    
+    dbExploit.query("SELECT immatriculation FROM vehicule", (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+        res.send(result);
+    })
 })
 // Route to delete a vehicule
 app.delete('/deleteVehicule/:id',(req,res) => {
@@ -207,7 +217,7 @@ app.delete('/deleteVehicule/:id',(req,res) => {
     const id = req.params.id;
 
     dbExploit.query("DELETE FROM vehicule WHERE id= ?", id, (err,result) => {
-        if(err) {
+        if (err) {
             console.log(err)
         }
     })

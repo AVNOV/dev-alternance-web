@@ -16,12 +16,10 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { DateRangeRounded, DeleteForeverRounded, Email, LocalShipping, TodayRounded } from '@mui/icons-material';
-import TableList from '../TableLists';
 import Logout from '../Login/Logout';
 import Login from '../Login/Login';
+import { Autocomplete, TextField } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -97,11 +95,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+  
   const handleDrawerOpen = () => {
     setOpen(true);
   };
-
+  
   const handleDrawerClose = () => {
     setOpen(false);
   };
@@ -123,7 +121,7 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" color="orange">
             CREAT
           </Typography>
         </Toolbar>
@@ -136,9 +134,10 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Véhicule', 'Activité Véhicule', 'Activitées Journalières'].map((text, index) => (
+          {['Véhicule', 'Activitées Véhicules', 'Activitées Journalières'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
+              <ListItemButton 
+                onClick={handleDrawerClose}
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
@@ -189,7 +188,7 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <TableList />
+        {/*<TableList />*/}
       </Box>
     </Box>
   );
