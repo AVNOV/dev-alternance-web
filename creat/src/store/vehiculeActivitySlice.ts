@@ -1,23 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 type vehiculeActivityContext = {
-    vehicule: Array<any>,
+    vehiculeActivity: Array<any>,
 };
 
 const initialState: vehiculeActivityContext = {
-    vehicule: [],
+    vehiculeActivity: [],
 };
 
-const vehiculeSlice = createSlice({
+const vehiculeActivitySlice = createSlice({
     name: 'vehiculeActivity',
     initialState,
     reducers: {
         setVehiculeActivity: (state, { payload }: { payload: [] }) => {
-            state.vehicule = payload;
+            state.vehiculeActivity = payload;
         },
     },
 });
 
-export const { setVehiculeActivity } = vehiculeSlice.actions;
+export const { setVehiculeActivity } = vehiculeActivitySlice.actions;
 
-export default vehiculeSlice.reducer;
+export default vehiculeActivitySlice.reducer;

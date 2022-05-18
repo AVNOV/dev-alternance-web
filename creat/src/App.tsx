@@ -1,40 +1,42 @@
-import VehiculeList from "./component/vehiculeComponents/vehiculeList";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { Provider } from "react-redux";
+import { store } from "./store/exploitReduxStore";
+import Login from './components/Login/Login';
+import Logout from './components/Login/Logout';
+import Profile from './components/Login/Profile';
+import { useAuth0 } from '@auth0/auth0-react'
+import ClippedDrawer from './components/Template/ClippedDrawer';
+import MiniDrawer from './components/Template/ModularClippedDrawer';
+import LoadingSpinner from './components/Spinner/LoadingSpinner';
 
 function App() {
   
+  	const { isLoading } = useAuth0(); 
+
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
+
+  if (isLoading) return (<div className='loading'><LoadingSpinner /></div>);
+
   return (
-    <div>
-      <VehiculeList />
-    </div>
+    <>
+      <ThemeProvider theme={darkTheme}>
+        <Provider store={store}>
+          <Router>
+         <Routes>
+            <Route path='/login' element={<><Login /><Logout /><Profile /></>} /> 
+            <Route path="/clipped" element={<><ClippedDrawer /></>} />
+			<Route path="/mini" element={<><MiniDrawer /></>} />
+          </Routes>
+          </Router>
+        </Provider>
+      </ThemeProvider>
+    </>
   );
 }
 
 export default App;
-
-/*
-async function getVehicules() {
-  try {
-    // 👇️ const data: GetUsersResponse
-    const { data } = await axios.get<GetVehiculeResponse>(
-      'http://localhost:3002/getVehicules',
-      {
-        headers: {
-          Accept: 'application/json',
-        },
-      },
-    );
-    return data;
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      console.log('error message: ', error.message);
-      return error.message;
-    } else {
-      console.log('unexpected error: ', error);
-      return 'An unexpected error occurred';
-    }
-  }
-}
-
-const res = getVehicules();
-console.log(JSON.stringify(res, null, 4));
-*/

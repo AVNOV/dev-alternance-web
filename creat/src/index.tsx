@@ -1,20 +1,26 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { store } from './store/vehiculeStore';
+import ReactDOM from 'react-dom';
+import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import './index.css';
+import { createRoot } from "react-dom/client";
+import { Auth0Provider } from '@auth0/auth0-react';
 
-const container = document.getElementById('root')!;
-const root = createRoot(container);
+const domain: string | any = process.env.REACT_APP_AUTH0_DOMAIN;
+const clientId: string | any = process.env.REACT_APP_AUTH0_CLIENT_ID;
+
+const rootElement: any = document.getElementById("root");
+const root: any = createRoot(rootElement);
 
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
+    <Auth0Provider
+      domain={domain}
+      clientId={clientId}
+      redirectUri={window.location.origin}
+      >
       <App />
-    </Provider>
-  </React.StrictMode>
+    </Auth0Provider>,
 );
 
 // If you want to start measuring performance in your app, pass a function
