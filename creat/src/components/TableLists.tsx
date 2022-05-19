@@ -10,13 +10,22 @@ import TableRow from '@mui/material/TableRow';
 import { useAppDispatch, useAppSelector } from '../store/exploitReduxStore';
 import { setVehiculeActivity } from '../store/vehiculeActivitySlice';
 import { setDailyActivity } from '../store/dailyActivitySlice';
-import { Button } from '@mui/material';
-import { Navigate } from 'react-router-dom';
-import { setVehicule } from '../store/vehiculeSlice';
+import { selectVehicules, setVehicule } from '../store/vehiculeSlice';
+import SelectImmatriculation from './SelectImmatriculation';
+import { Typography } from '@mui/material';
+
+export type VehiculeTypeDTO = {
+    vehicule_id: number,
+    immatriculation: string,
+    modele: string,
+    marque: string
+};
 
 export default function TableList() {
     return (
         <div>
+            <SelectImmatriculation />
+            <Typography align={'center'} variant={'h6'}>Table List Exposition :</Typography>
             <DailyActivityList />
         </div>
     )
@@ -26,7 +35,7 @@ export function DailyActivityList() {
     const dispatch = useAppDispatch();
     const { dailyActivity } = useAppSelector((state) => state.dailyActivity);
     const { vehiculeActivity } = useAppSelector((state) => state.vehiculeActivity);
-    const { vehicule } = useAppSelector((state) => state.vehicule);
+    const vehicule = useAppSelector(selectVehicules);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const FetchDailyActivity = async () => {
@@ -47,14 +56,17 @@ export function DailyActivityList() {
     };
 
     const FetchVehicules = async () => {
-        let response: any = await fetch('http://localhost:3002/getVehicules');
-        response = await response.json();
-        if (response) {
+        try {
+            let response = await fetch('http://localhost:3002/getVehicules');
+            const data: VehiculeTypeDTO[] = await response.json();
+            dispatch(setVehicule(data));
+        }   catch (error) {
+            console.log(error);
         }
     };
+
     useEffect(() => {
-            console.log("Info Vehicule:" + JSON.stringify(vehicule));
-            FetchVehicules();
+        FetchVehicules();
     }, []);
 
     useEffect(() => {
@@ -65,17 +77,71 @@ export function DailyActivityList() {
         FetchDailyActivity();
     }, []);
 
+    const vehiculeImmat = vehicule.map<string>((camion) => {
+        return camion.immatriculation;
+    });
+
     return (
         <>
             <Paper sx={{
+                color: 'yellow',
                 width: '80%',
                 overflow: 'hidden',
                 margin: 'auto',
                 marginBottom: '6vh',
             }}
             >
+                <TableContainer sx={{ maxHeight: 750 }}>
+                <h3>Véhicules</h3>
+                <Table stickyHeader aria-label="sticky table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>
+                                <strong>Véhicule id</strong>
+                            </TableCell>
+                            <TableCell>
+                                <strong>Immatriculation</strong>
+                            </TableCell>
+                            <TableCell>
+                                <strong>Modèle</strong>
+                            </TableCell>
+                            <TableCell>
+                                <strong>Marque</strong>
+                            </TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>  
+                    {
+                        vehicule?.map((vehiculeMap: { vehicule_id: number; immatriculation: string; modele: string; marque: string; }) => {
+                            const {
+                                vehicule_id,
+                                immatriculation,
+                                marque,
+                                modele
+                            } = vehiculeMap;
+                          return (
+                            <TableRow key={vehicule_id} hover role="checkbox">
+                                <TableCell>
+                                    {vehicule_id}
+                                </TableCell>
+                                <TableCell>
+                                    {immatriculation}
+                                </TableCell>
+                                <TableCell>
+                                    {modele}
+                                </TableCell>
+                                <TableCell>
+                                    {marque}
+                                </TableCell>
+                            </TableRow>
+                          );
+                        })
+                    }
+                    </TableBody>
+                </Table>
+            </TableContainer>
             <TableContainer sx={{ maxHeight: 750 }}>
-                <h3 color='orange'>Activité Journalières</h3>
+                <h3>Activité Journalières</h3>
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead>
                         <TableRow>
@@ -83,7 +149,6 @@ export function DailyActivityList() {
                                 <strong>activité id</strong>
                             </TableCell>
                             <TableCell>
-                                <p>test</p>
                                 <strong>vehicule activité id</strong>
                             </TableCell>
                             <TableCell>
@@ -132,7 +197,7 @@ export function DailyActivityList() {
                 </Table>
                 </TableContainer>
                 <TableContainer sx={{ maxHeight: 750 }}>
-                <h3 color='orange'>Activité Vehicule</h3>
+                <h3>Activité Vehicule</h3>
                     <Table stickyHeader aria-label="sticky table">
                         <TableHead>
                             <TableRow>
@@ -184,55 +249,6 @@ export function DailyActivityList() {
                               );
                             })
                         }
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            <TableContainer sx={{ maxHeight: 750 }}>
-                <h3 color='orange'>Véhicules</h3>
-                <Table stickyHeader aria-label="sticky table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>
-                                <strong>Véhicule id</strong>
-                            </TableCell>
-                            <TableCell>
-                                <strong>Immatriculation</strong>
-                            </TableCell>
-                            <TableCell>
-                                <strong>Marque</strong>
-                            </TableCell>
-                            <TableCell>
-                                <strong>Modèle</strong>
-                            </TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>  
-                    {
-                        vehicule?.map((vehiculeMap: { vehicule_id: number; immatriculation: string; marque: string; modele: string;}) => {
-                            const {
-                                vehicule_id,
-                                immatriculation,
-                                marque,
-                                modele
-                            } = vehiculeMap;
-                          return (
-                            <TableRow key={vehicule_id} hover role="checkbox">
-                                <TableCell>
-                                    {vehicule_id}
-                                </TableCell>
-                                <TableCell>
-                                    {immatriculation}
-                                </TableCell>
-                                <TableCell>
-                                    {marque}
-                                </TableCell>
-                                <TableCell>
-                                    {modele}
-                                </TableCell>
-                            </TableRow>
-                          );
-                        })
-                    }
                     </TableBody>
                 </Table>
             </TableContainer>

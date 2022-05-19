@@ -163,6 +163,7 @@ export default function MiniDrawer() {
           {['Profile', 'All Mails', 'Trash'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
+                onClick={handleDrawerClose}
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',

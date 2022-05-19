@@ -1,23 +1,34 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { VehiculeTypeDTO } from '../components/TableLists';
+import { RootState } from './exploitReduxStore';
 
-type vehiculeContext = {
-    vehicule: Array<any>,
+type VehiculeType = {
+    vehicule_id: number,
+    immatriculation: string,
+    modele: string,
+    marque: string
 };
 
-const initialState: vehiculeContext = {
-    vehicule: [],
+type VehiculeState = {
+    currentVehicules: VehiculeType[],
+};
+
+const initialState: VehiculeState = {
+    currentVehicules: [],
 };
 
 const vehiculeSlice = createSlice({
     name: 'vehicule',
     initialState,
     reducers: {
-        setVehicule: (state, { payload }: { payload: [] }) => {
-            state.vehicule = payload;
+        setVehicule: (state, action: PayloadAction<VehiculeTypeDTO[]>) => {
+            state.currentVehicules = action.payload;
         },
     },
 });
 
 export const { setVehicule } = vehiculeSlice.actions;
+
+export const selectVehicules = ({vehicule}: RootState) : VehiculeType[] => vehicule.currentVehicules;
 
 export default vehiculeSlice.reducer;
