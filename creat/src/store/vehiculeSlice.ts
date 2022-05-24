@@ -10,7 +10,7 @@ type VehiculeType = {
 };
 
 type VehiculeState = {
-    currentVehicules: VehiculeType[],
+    currentVehicules: VehiculeType[]
 };
 
 const initialState: VehiculeState = {
