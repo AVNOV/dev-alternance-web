@@ -21,6 +21,22 @@ export type VehiculeTypeDTO = {
     marque: string
 };
 
+export type VehivuleActivityTypeDTO = {
+    vehicule_activite_id: number,
+    vehicule_id: number,
+    km_depart: number,
+    km_arrive: number,
+    km_jour: number
+};
+
+export type DailyActivityTypeDTO = {
+    activite_jour_id: number,
+    vehicule_activite_id: number,
+    heure_embauche: string,
+    heure_debauche: string,
+    duree_pause: string
+};
+
 export default function TableList() {
     return (
         <div>
@@ -33,8 +49,8 @@ export default function TableList() {
 
 export function DailyActivityList() {
     const dispatch = useAppDispatch();
-    const { dailyActivity } = useAppSelector((state) => state.dailyActivity);
-    const { vehiculeActivity } = useAppSelector((state) => state.vehiculeActivity);
+    const { currentDailyActivity } = useAppSelector((state) => state.dailyActivity);
+    const { currentVehiculeActivity: vehiculeActivity } = useAppSelector((state) => state.vehiculeActivity);
     const vehicule = useAppSelector(selectVehicules);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -76,10 +92,6 @@ export function DailyActivityList() {
     useEffect(() => {
         FetchDailyActivity();
     }, []);
-
-    const vehiculeImmat = vehicule.map<string>((camion) => {
-        return camion.immatriculation;
-    });
 
     return (
         <>
@@ -164,7 +176,7 @@ export function DailyActivityList() {
                     </TableHead>
                     <TableBody>  
                     {
-                        dailyActivity?.map((vehiculeMap: { activite_jour_id: number; vehicule_activite_id: number; heure_embauche: any; heure_debauche: any; duree_pause: any; }) => {
+                        currentDailyActivity?.map((vehiculeMap: { activite_jour_id: number; vehicule_activite_id: number; heure_embauche: any; heure_debauche: any; duree_pause: any; }) => {
                             const {
                                 activite_jour_id,
                                 vehicule_activite_id,
