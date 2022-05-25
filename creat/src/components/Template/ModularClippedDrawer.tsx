@@ -19,7 +19,6 @@ import ListItemText from '@mui/material/ListItemText';
 import { DateRangeRounded, DeleteForeverRounded, Email, LocalShipping, TodayRounded } from '@mui/icons-material';
 import Logout from '../Login/Logout';
 import Login from '../Login/Login';
-import { Autocomplete, TextField } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -92,7 +91,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function MiniDrawer() {
+export default function ModularClippedDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   

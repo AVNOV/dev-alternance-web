@@ -30,6 +30,6 @@ const vehiculeActivitySlice = createSlice({
 
 export const { setVehiculeActivity } = vehiculeActivitySlice.actions;
 
-export const selectDailyActivities = ({vehiculeActivity}: RootState) : VehiculeActivityType[] => vehiculeActivity.currentVehiculeActivity;
+export const selectVehiculeActivity = ({vehiculeActivity}: RootState) : VehiculeActivityType[] => vehiculeActivity.currentVehiculeActivity;
 
 export default vehiculeActivitySlice.reducer;
