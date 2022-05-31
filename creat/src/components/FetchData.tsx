@@ -11,7 +11,6 @@ import { useAppDispatch, useAppSelector } from '../store/exploitReduxStore';
 import { setVehiculeActivity } from '../store/vehiculeActivitySlice';
 import { setDailyActivity } from '../store/dailyActivitySlice';
 import { selectVehicules, setVehicule } from '../store/vehiculeSlice';
-import SelectImmatriculation from './SelectImmatriculation';
 import { Typography } from '@mui/material';
 
 export type VehiculeTypeDTO = {
@@ -37,23 +36,39 @@ export type DailyActivityTypeDTO = {
     duree_pause: string
 };
 
+export type Activitee = {
+    date_activite: string,
+    debut: string,
+    fin: string,
+    prevue: number,
+    distri: number,
+    avise: number,
+    poste: number,
+    relaie: number,
+    refuse: number,
+    autre: number,
+    esd: number,
+    reguliere: number,
+    km: number,
+    tournee_id: number,
+};
+/*
 export default function TableList() {
     return (
         <div>
-            <SelectImmatriculation />
             <Typography align={'center'} variant={'h6'}>Table List Exposition :</Typography>
             <DailyActivityList />
         </div>
     )
 }
+*/
 
-export function DailyActivityList() {
+export function FetchData() {
     const dispatch = useAppDispatch();
     const { currentDailyActivity } = useAppSelector((state) => state.dailyActivity);
     const { currentVehiculeActivity: vehiculeActivity } = useAppSelector((state) => state.vehiculeActivity);
     const vehicule = useAppSelector(selectVehicules);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     const FetchDailyActivity = async () => {
         let response: any = await fetch('http://localhost:3002/getDailyActivity');
         response = await response.json();
@@ -61,7 +76,7 @@ export function DailyActivityList() {
             dispatch(setDailyActivity(response));
         }
     };
-
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const FetchVehiculesActivity = async () => {
         let response: any = await fetch('http://localhost:3002/getVehiculesActivity');
@@ -70,7 +85,7 @@ export function DailyActivityList() {
             dispatch(setVehiculeActivity(response));
         }
     };
-
+    
     const FetchVehicules = async () => {
         try {
             let response = await fetch('http://localhost:3002/getVehicules');
@@ -80,6 +95,8 @@ export function DailyActivityList() {
             console.log(error);
         }
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         FetchVehicules();
@@ -93,7 +110,7 @@ export function DailyActivityList() {
         FetchDailyActivity();
     }, []);
 
-    return (
+    return (<>{console.log("voila")}</>); /*
         <>
             <Paper sx={{
                 color: 'yellow',
@@ -266,5 +283,5 @@ export function DailyActivityList() {
             </TableContainer>
             </Paper>
         </>
-    );
+    ); */
 }

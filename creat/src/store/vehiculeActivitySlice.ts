@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { VehivuleActivityTypeDTO } from '../components/TableLists';
+import { VehivuleActivityTypeDTO } from '../components/FetchData';
 import { RootState } from './exploitReduxStore';
 
 type VehiculeActivityType = {

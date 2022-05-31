@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { DailyActivityTypeDTO } from '../components/TableLists';
+import { DailyActivityTypeDTO } from '../components/FetchData';
 import { RootState } from './exploitReduxStore';
-
 
 type DailyActivityType = {
     activite_jour_id: number,

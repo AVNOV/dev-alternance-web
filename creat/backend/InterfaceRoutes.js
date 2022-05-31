@@ -11,18 +11,35 @@ app.use(express.json())
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 
-/* ------------------------------------- DB AUTH ---------------------------------------- */
-// LOGIN Route
-app.post('/login', (req, res) => {
-    // Insert Login Code Here
-    let username = req.body.username;
-    let password = req.body.password;
-    res.send(`Username: ${username} Password: ${password}`);
+/* ------------------------------------- DB ACTIVITEE ---------------------------------------- */
+// Activité Route
+app.post('/activity', (req) => {
+    const date_activite = req.body.date_activite;
+    const debut = req.body.password;
+    const fin = req.body.fin;
+    const prevue = req.body.prevue;
+    const distri = req.body.distri;
+    const avise = req.body.avise;
+    const poste = req.body.poste;
+    const relaie = req.body.relaie;
+    const refuse = req.body.refuse;
+    const autre = req.body.autre;
+    const esd = req.body.esd;
+    const reguliere = req.body.reguliere;
+    const km = req.body.km;
+    const tournee_id = req.body.tournee_id;
+
+    dbExploit.query("INSERT INTO activitee () VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", [date_activite, debut, fin, prevue, distri, avise, poste, relaie, refuse, autre, esd, reguliere, km, tournee_id], (err, result) => {
+        if(err) {
+            console.log(err)
+        }
+        console.log(result)
+    });
   });
 // Route to get users
-app.get("/getUser", (req,res) => {
+app.get("/getActivity", (req,res) => {
 
-    dbAuth.query("SELECT * FROM user", (err, result) => {
+    dbAuth.query("SELECT * FROM activitee", (err, result) => {
         if(err) {
             console.log(err)
         } 
@@ -41,9 +58,8 @@ app.get("/getUserFromId/:id", (req,res) => {
         res.send(result)
     });
 });
-
 // Route for creating a new user /register
-app.post('/createUser', (req, res) => {
+app.post('/createUser', (req) => {
 
     const username = req.body.vehicule_activite_id;
     const pwd = req.body.heure_embauche;

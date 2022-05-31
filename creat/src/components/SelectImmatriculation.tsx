@@ -3,7 +3,8 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import { useAppSelector } from '../store/exploitReduxStore';
 import { selectVehicules } from '../store/vehiculeSlice';
-import { Button } from '@mui/material';
+import { Button, Grid } from '@mui/material';
+import { FetchData } from './FetchData';
 
 function SelectImmatriculation() {
     const vehicule = useAppSelector(selectVehicules);
@@ -19,22 +20,25 @@ function SelectImmatriculation() {
     }
 
     return (
-        <Box sx={{ minWidth: 120, maxWidth: 300, marginLeft: 70, minHeight: 50, maxHeight: 60, mb: 10 }}>
-            <InputLabel id="select-label">Selectionne ton immatriculation :</InputLabel>
-                <FormControl fullWidth>
-                    <select id='template-select'>
-                    <option>
-                        immatriculation **-***-**
-                    </option>
-                    {vehiculeImmat.sort((a, b) => a > b ? 1 : -1).map(immats => <option key={immats} value={vehiculeImmat}>{immats}</option>)}
-                </select>
-                    <Button
-                        variant="contained"
-                        sx={{ mt: 1, bgcolor: 'lightgrey' }}
-                        onClick={handleRedirect}
-                    >ok</Button>
-            </FormControl>
-        </Box>
+        <Grid container justifyContent={"center"}>
+            <Box>
+                <FetchData/>
+                <InputLabel id="select-label">Selectionne ton immatriculation :</InputLabel>
+                    <FormControl fullWidth>
+                        <select id='template-select'>
+                        <option>
+                            immatriculation **-***-**
+                        </option>
+                        {vehiculeImmat.sort((a, b) => a > b ? 1 : -1).map((immats, index) => <option key={index} value={vehiculeImmat}>{immats}</option>)}
+                        </select>
+                        <Button
+                            variant="contained"
+                            sx={{ mt: 1, bgcolor: 'lightgrey' }}
+                            onClick={handleRedirect}
+                        >ok</Button>
+                </FormControl>
+            </Box>
+        </Grid>
     );
 }
 

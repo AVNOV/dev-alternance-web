@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { VehiculeTypeDTO } from '../components/TableLists';
+import { VehiculeTypeDTO } from '../components/FetchData';
 import { RootState } from './exploitReduxStore';
 
 type VehiculeType = {

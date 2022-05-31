@@ -1,32 +1,48 @@
+import { Label } from "@mui/icons-material";
+import { Box, Button, ButtonGroup, Grid, TextField, Typography } from "@mui/material";
+import { SyntheticEvent, useState } from "react";
 import { useAppSelector } from "../../store/exploitReduxStore";
 import { selectVehiculeActivity } from "../../store/vehiculeActivitySlice";
-import SelectImmatriculation from "../SelectImmatriculation";
-import TableList from "../TableLists";
-import ModularClippedDrawer from "../Template/ModularClippedDrawer";
 import './Activite.css';
 
-function ActiviteJour() {
-    const vehiculeActivity = useAppSelector(selectVehiculeActivity);
+function ActiviteJour() : JSX.Element{
+    const [hourStart, setHourStart] = useState<string>('');
+    
+    const handlePrint = () => {
+        // eslint-disable-next-line no-restricted-globals
+        console.log(hourStart);
+    };
+
+
     
     return (
-        <>
-            <ModularClippedDrawer />
+        <div>
+            <Grid container justifyContent={"center"}>
+                <Box sx={{ display: 'grid', mt: 5 }}>
+
+                        <Typography variant="overline" display="block" >Heure d'embauche :</Typography>
+                        <TextField sx={{ boxShadow: 1, input: { color: 'blue' } }} value={hourStart} onChange={(e) => setHourStart(e.target.value)} type="time"/>
+                        <br />
+                        <Typography variant="overline" display="block" >Heure de débauche :</Typography>
+                        <TextField sx={{ boxShadow: 1, input: { color: 'blue' } }} type="time"/>
+                        <br />
+                        <Typography color={"red"} variant="overline" display="block" >Temps de pause :</Typography>
+                        <TextField  sx={{ boxShadow: 1, input: { color: 'orange' } }} type="number"/>
+
+                </Box>
+            </Grid>
             <div>
-                <label className="time">Heure d'embauche :</label>
-                <input className="time" type="datetime-local" />
+                <ButtonGroup className="fullWidth" sx={{ position: "fixed", bottom: 0, border: '1px solid red' }} variant="contained" aria-label="text button group">
+                    <div className="align-self-center">
+                        <Button onClick={handlePrint}>One</Button>
+                        <Button>Two</Button>
+                        <Button>Three</Button>
+                    </div>
+                </ButtonGroup>
             </div>
-            <br />
-            <div>
-                <label className="time">Heure de débauche :</label>
-                <input className="time" type="datetime-local" />
-            </div>
-            <br />
-            <div>
-                <label className="time">Temps de pause :</label>
-                <input className="time" type="number" />
-            </div>
-        </>
+        </div>
     );
 }
 
 export default ActiviteJour;
+            
