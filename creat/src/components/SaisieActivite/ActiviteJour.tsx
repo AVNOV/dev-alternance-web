@@ -1,22 +1,27 @@
-import { Label } from "@mui/icons-material";
-import { Box, Button, ButtonGroup, Grid, TextField, Typography } from "@mui/material";
-import { SyntheticEvent, useState } from "react";
-import { useAppSelector } from "../../store/exploitReduxStore";
-import { selectVehiculeActivity } from "../../store/vehiculeActivitySlice";
+import { Box, Grid, TextField, Typography } from "@mui/material";
+import { info } from "console";
+import { useState } from "react";
+import FooterNav from "../Template/Footer";
+import InformationModal from "../Template/InformationModal";
 import './Activite.css';
 
 function ActiviteJour() : JSX.Element{
     const [hourStart, setHourStart] = useState<string>('');
-    
+    const [hourEnd, setHourEnd] = useState<string>('');
+    const [breakTime, setBreakTime] = useState<string>('');
+
+/*    
     const handlePrint = () => {
-        // eslint-disable-next-line no-restricted-globals
         console.log(hourStart);
     };
+*/    
+    const info = [
+        { id: 1, msg: "Cette application vous permet de faire votre saisie d'activité. Les différentes pages l'outil vous accompagneront dans la rédaction de celle-ci. Ici saisissez vos horaires." },
+    ];
 
-
-    
     return (
         <div>
+            <InformationModal {...info[0]}/>
             <Grid container justifyContent={"center"}>
                 <Box sx={{ display: 'grid', mt: 5 }}>
 
@@ -24,21 +29,14 @@ function ActiviteJour() : JSX.Element{
                         <TextField sx={{ boxShadow: 1, input: { color: 'blue' } }} value={hourStart} onChange={(e) => setHourStart(e.target.value)} type="time"/>
                         <br />
                         <Typography variant="overline" display="block" >Heure de débauche :</Typography>
-                        <TextField sx={{ boxShadow: 1, input: { color: 'blue' } }} type="time"/>
+                        <TextField sx={{ boxShadow: 1, input: { color: 'blue' } }} value={hourEnd} onChange={(e) => setHourEnd(e.target.value)} type="time"/>
                         <br />
                         <Typography color={"red"} variant="overline" display="block" >Temps de pause :</Typography>
-                        <TextField  sx={{ boxShadow: 1, input: { color: 'orange' } }} type="number"/>
-
+                        <TextField  sx={{ boxShadow: 1, input: { color: 'orange' } }} value={breakTime} onChange={(e) => setBreakTime(e.target.value)} type="number"/>
                 </Box>
             </Grid>
             <div>
-                <ButtonGroup className="fullWidth" sx={{ position: "fixed", bottom: 0, border: '1px solid red' }} variant="contained" aria-label="text button group">
-                    <div className="align-self-center">
-                        <Button onClick={handlePrint}>One</Button>
-                        <Button>Two</Button>
-                        <Button>Three</Button>
-                    </div>
-                </ButtonGroup>
+                <FooterNav />
             </div>
         </div>
     );

@@ -9,9 +9,10 @@ import { useAuth0 } from '@auth0/auth0-react'
 import LoadingSpinner from './components/Spinner/LoadingSpinner';
 import ActiviteJour from './components/SaisieActivite/ActiviteJour';
 import Header from './components/Template/Header';
-import SelectImmatriculation from './components/SelectImmatriculation';
-import { FetchData } from './components/FetchData';
+import SelectImmatriculation from './components/SaisieActivite/SelectImmatriculation';
 import NewActivity from './components/SaisieActivite/NewActivity';
+import Footer from './components/Template/Footer';
+import SetKilometrage from './components/SaisieActivite/SetKilometrage';
 
 function App() {
   
@@ -35,13 +36,13 @@ function App() {
                             <Route path='/login' element={<><div><Login /></div><Logout /><Profile /></>} /> 
                         </Routes>
                         <Routes>
-                            <Route path='/dailyActivity' element={<><Header/><ActiviteJour/></>} />
-                            <Route path='/vehiculeActivity' element={<><Header/><ActiviteJour/></>} />
-                            <Route path='/selectActivity' element={<><Header/><ActiviteJour/></>} />
-                            <Route path='/setActivityPoints' element={<><Header/><ActiviteJour/></>} />
+                            <Route path='/dailyActivity' element={<><Header /><ActiviteJour /></>} />
+                            <Route path='/vehiculeActivity' element={<><Header /><SelectImmatriculation /><SetKilometrage /><Footer /></>} />
+                            <Route path='/selectActivity' element={<><Header /><ActiviteJour /></>} />
+                            <Route path='/setActivityPoints' element={<><Header /><ActiviteJour /></>} />
                             {/* Choix 1: Faire une modal de recapitulatif de saisie d'activité */}
                             {/* choix 2: Faire une route spéciale pour le récapitulatif "/recap" */}
-                            <Route path='/recap' element={<><Header/><ActiviteJour/></>} />
+                            <Route path='/recap' element={<><Header /><ActiviteJour /></>} />
                         </Routes>
                     </Router>
                 </Provider>

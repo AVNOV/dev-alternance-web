@@ -1,17 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
 import { useAppDispatch, useAppSelector } from '../store/exploitReduxStore';
 import { setVehiculeActivity } from '../store/vehiculeActivitySlice';
 import { setDailyActivity } from '../store/dailyActivitySlice';
 import { selectVehicules, setVehicule } from '../store/vehiculeSlice';
-import { Typography } from '@mui/material';
 
 export type VehiculeTypeDTO = {
     vehicule_id: number,
@@ -36,7 +28,7 @@ export type DailyActivityTypeDTO = {
     duree_pause: string
 };
 
-export type Activitee = {
+export type ActiviteeDTO = {
     date_activite: string,
     debut: string,
     fin: string,
@@ -65,9 +57,9 @@ export default function TableList() {
 
 export function FetchData() {
     const dispatch = useAppDispatch();
-    const { currentDailyActivity } = useAppSelector((state) => state.dailyActivity);
+//    const { currentDailyActivity } = useAppSelector((state) => state.dailyActivity);
     const { currentVehiculeActivity: vehiculeActivity } = useAppSelector((state) => state.vehiculeActivity);
-    const vehicule = useAppSelector(selectVehicules);
+//    const vehicule = useAppSelector(selectVehicules);
 
     const FetchDailyActivity = async () => {
         let response: any = await fetch('http://localhost:3002/getDailyActivity');
@@ -110,7 +102,7 @@ export function FetchData() {
         FetchDailyActivity();
     }, []);
 
-    return (<>{console.log("voila")}</>); /*
+    return (<></>); /*
         <>
             <Paper sx={{
                 color: 'yellow',
