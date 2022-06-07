@@ -17,9 +17,10 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
 import logo from './logo.png';
 import { useState } from 'react';
+import Login from '../Login/Login';
 
 const pages: string[] = ['Accueil'];
-const settings: JSX.Element[] = [<Profile/>, <Logout />];
+const settings: JSX.Element[] = [<Profile/>, <Login />, <Logout />];
 
 function Header() : JSX.Element {
     const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);

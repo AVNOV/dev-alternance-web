@@ -7,7 +7,7 @@ import '../SaisieActivite/Activite.css';
 const RouteList: {[key: number]: string} = {
     1: '/dailyActivity',
     2: '/vehiculeActivity',
-    3: '/selectActivity',
+    3: '/selectTournee',
     4: '/setActivityPoints',
     5: '/recap'
 };
@@ -39,7 +39,7 @@ function FooterNav() : JSX.Element{
     return (
         <Fragment>
             <Fragment>
-                <ButtonGroup className="fullWidth" sx={{ position: "fixed", bottom: 100 }} aria-label="text button group">
+                <ButtonGroup className="fullWidth" sx={{ position: "fixed", bottom: 50 }} aria-label="text button group">
                     <div className="align-self-center">
                         <Button sx={{ borderRadius: 5, backgroundColor: 'green', mr: 5 }} onClick={handleNavigatePrev}>{nav[0].symbol}</Button>
                         <Button sx={{ borderRadius: 5, backgroundColor: 'green'}} onClick={handleNavigateNext}>{nav[1].symbol}</Button>

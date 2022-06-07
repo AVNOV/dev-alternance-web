@@ -11,6 +11,17 @@ app.use(express.json())
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 
+/* ------------------------------------- DB TOURNEE ---------------------------------------- */
+// Tournee Route
+app.get("/getTournee", (req,res) => {
+
+    dbAuth.query("SELECT * FROM activitee", (err, result) => {
+        if(err) {
+            console.log(err)
+        } 
+        res.send(result)
+    });
+});
 /* ------------------------------------- DB ACTIVITEE ---------------------------------------- */
 // Activité Route
 app.post('/activity', (req) => {
