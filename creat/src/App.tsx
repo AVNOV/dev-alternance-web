@@ -13,6 +13,9 @@ import SelectImmatriculation from './components/SaisieActivite/SelectImmatricula
 import NewActivity from './components/SaisieActivite/NewActivity';
 import Footer from './components/Template/Footer';
 import SetKilometrage from './components/SaisieActivite/SetKilometrage';
+import FooterNav from './components/Template/Footer';
+import SelectTournee from './components/SaisieActivite/SelectTournee';
+import SetActivityPoints from './components/SaisieActivite/SetActivityPoints';
 
 function App() {
   
@@ -36,13 +39,13 @@ function App() {
                             <Route path='/login' element={<><div><Login /></div><Logout /><Profile /></>} /> 
                         </Routes>
                         <Routes>
-                            <Route path='/dailyActivity' element={<><Header /><ActiviteJour /></>} />
+                            <Route path='/dailyActivity' element={<><Header /><ActiviteJour /><FooterNav /></>} />
                             <Route path='/vehiculeActivity' element={<><Header /><SelectImmatriculation /><SetKilometrage /><Footer /></>} />
-                            <Route path='/selectActivity' element={<><Header /><ActiviteJour /></>} />
-                            <Route path='/setActivityPoints' element={<><Header /><ActiviteJour /></>} />
+                            <Route path='/selectTournee' element={<><Header /><SelectTournee /><FooterNav /></>} />
+                            <Route path='/setActivityPoints' element={<><Header /><SetActivityPoints /><FooterNav /></>} />
                             {/* Choix 1: Faire une modal de recapitulatif de saisie d'activité */}
                             {/* choix 2: Faire une route spéciale pour le récapitulatif "/recap" */}
-                            <Route path='/recap' element={<><Header /><ActiviteJour /></>} />
+                            <Route path='/recap' element={<><Header /><p>recap</p><FooterNav /></>} />
                         </Routes>
                     </Router>
                 </Provider>
