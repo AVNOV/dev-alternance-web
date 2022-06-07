@@ -1,8 +1,8 @@
 import { Box, Grid, TextField, Typography } from "@mui/material";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import FooterNav from "../Template/Footer";
 
-function SetKilometrage() : JSX.Element{
+function SetKilometrage() : JSX.Element {
     const [kmStart, setKmStart] = useState<string>('');
     const [kmEnd, setHourEnd] = useState<string>('');
 
@@ -16,7 +16,7 @@ function SetKilometrage() : JSX.Element{
     }
 
     return (
-        <div>
+        <Fragment>
             <Grid container justifyContent={"center"}>
                 <Box sx={{ display: 'grid', mt: 5 }}>
                         <Typography variant="overline" display="block" >Kilometrage Départ :</Typography>
@@ -28,10 +28,7 @@ function SetKilometrage() : JSX.Element{
                         <Typography sx={{ fontSize: 10, color: "blue" }} variant="overline" display="block" >Vous avez parcouru {ttl} km</Typography>
                 </Box>
             </Grid>
-            <div>
-                <FooterNav />
-            </div>
-        </div>
+        </Fragment>
     );
 }
 

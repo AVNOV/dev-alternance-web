@@ -2,8 +2,9 @@ import Box from '@mui/material/Box';
 import { useAppSelector } from '../../store/exploitReduxStore';
 import { selectVehicules } from '../../store/vehiculeSlice';
 import { Grid, MenuItem, Select, Typography } from '@mui/material';
-import { FetchData } from '../FetchData';
 import InformationModal from '../Template/InformationModal';
+import { FetchData } from '../FetchData';
+import { Fragment } from 'react';
 
 function SelectImmatriculation() : JSX.Element {
     const vehicule = useAppSelector(selectVehicules);
@@ -12,14 +13,12 @@ function SelectImmatriculation() : JSX.Element {
         return camion.immatriculation;
     });
 
-    const info = [
-        { id: 1, msg: "Selection de son immatriculation et saisie du kilométrage." },
-    ];
+    const info = { id: 1, msg: "Selection de son immatriculation et saisie du kilométrage." };
 
 
     return (
-        <>
-            <InformationModal {...info[0]}/>
+        <Fragment>
+            <InformationModal {...info}/>
             <FetchData/>
             <Grid container justifyContent={"center"}>
                 <Box sx={{ display: 'grid', mt: 5, borderRadius: 1 }}>
@@ -35,7 +34,7 @@ function SelectImmatriculation() : JSX.Element {
                     </Select>
                 </Box>
             </Grid>
-        </>
+        </Fragment>
     );
 }
 

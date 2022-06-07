@@ -1,5 +1,9 @@
 import { Box, Button, Grid } from "@mui/material";
+import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
+import InformationModal from "../Template/InformationModal";
+
+const info = { id: 1, msg: "Cliquer sur le bouton 'NOUVELLE ACTIVITÉ' pour commencer la saisie." };
 
 function NewActivity() {
     const navigate = useNavigate();
@@ -10,7 +14,8 @@ function NewActivity() {
     };
 
     return (
-        <div>
+        <Fragment>
+            <InformationModal {...info}/>
             <Grid container justifyContent={"center"}>
                 <Box sx={{ mt: 10 }}>
                     <Button color="primary" size="large" type="submit" variant="contained" onClick={changeRoute}>
@@ -18,7 +23,7 @@ function NewActivity() {
                     </Button>
                 </Box>
             </Grid>
-    </div>
+        </Fragment>
     );
 }
 

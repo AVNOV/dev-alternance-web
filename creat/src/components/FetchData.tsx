@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/exploitReduxStore';
 import { setVehiculeActivity } from '../store/vehiculeActivitySlice';
 import { setDailyActivity } from '../store/dailyActivitySlice';
-import { selectVehicules, setVehicule } from '../store/vehiculeSlice';
+import { setVehicule } from '../store/vehiculeSlice';
 
 export type VehiculeTypeDTO = {
     vehicule_id: number,
@@ -79,6 +79,16 @@ export function FetchData() {
     };
     
     const FetchVehicules = async () => {
+        try {
+            let response = await fetch('http://localhost:3002/getVehicules');
+            const data: VehiculeTypeDTO[] = await response.json();
+            dispatch(setVehicule(data));
+        }   catch (error) {
+            console.log(error);
+        }
+    };
+
+    const FetchActivity = async () => {
         try {
             let response = await fetch('http://localhost:3002/getVehicules');
             const data: VehiculeTypeDTO[] = await response.json();

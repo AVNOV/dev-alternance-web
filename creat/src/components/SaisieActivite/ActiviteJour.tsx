@@ -1,6 +1,5 @@
 import { Box, Grid, TextField, Typography } from "@mui/material";
-import { info } from "console";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import FooterNav from "../Template/Footer";
 import InformationModal from "../Template/InformationModal";
 import './Activite.css';
@@ -15,13 +14,11 @@ function ActiviteJour() : JSX.Element{
         console.log(hourStart);
     };
 */    
-    const info = [
-        { id: 1, msg: "Cette application vous permet de faire votre saisie d'activité. Les différentes pages l'outil vous accompagneront dans la rédaction de celle-ci. Ici saisissez vos horaires." },
-    ];
+    const info = { id: 1, msg: "Ici saisissez vos horaires." };
 
     return (
-        <div>
-            <InformationModal {...info[0]}/>
+        <Fragment>
+            <InformationModal {...info}/>
             <Grid container justifyContent={"center"}>
                 <Box sx={{ display: 'grid', mt: 5 }}>
 
@@ -35,10 +32,7 @@ function ActiviteJour() : JSX.Element{
                         <TextField  sx={{ boxShadow: 1, input: { color: 'orange' } }} value={breakTime} onChange={(e) => setBreakTime(e.target.value)} type="number"/>
                 </Box>
             </Grid>
-            <div>
-                <FooterNav />
-            </div>
-        </div>
+        </Fragment>
     );
 }
 
