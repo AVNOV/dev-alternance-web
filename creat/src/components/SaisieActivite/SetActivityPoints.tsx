@@ -70,16 +70,16 @@ function Item(props: BoxProps) {
 
 const info = {id: 1, msg: "Saisie du nombre de points de livraison et du nombre de ramasse."};
 
-function SetActivityPoints() {
-    const [prevu, setPrevu] = useState(0);
-    const [distri, setDistri] = useState(0);
-    const [avise, setAvise] = useState(0);
-    const [poste, setPoste] = useState(0);
-    const [relai, setRelai] = useState(0);
-    const [refuse, setRefuse] = useState(0);
-    const [autre, setAutre] = useState(0);
-    const [esd, setESD] = useState(0);
-    const [reguliere, setReguliere] = useState(0);
+function SetActivityPoints() : JSX.Element {
+    const [prevu, setPrevu] = useState<number>(0);
+    const [distri, setDistri] = useState<number>(0);
+    const [avise, setAvise] = useState<number>(0);
+    const [poste, setPoste] = useState<number>(0);
+    const [relai, setRelai] = useState<number>(0);
+    const [refuse, setRefuse] = useState<number>(0);
+    const [autre, setAutre] = useState<number>(0);
+    const [esd, setESD] = useState<number>(0);
+    const [reguliere, setReguliere] = useState<number>(0);
 
     let ttlPts: number = prevu + distri + avise + poste + relai + refuse + autre;
     let ttlRms: number = esd + reguliere;
