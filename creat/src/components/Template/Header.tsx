@@ -51,6 +51,22 @@ function Header() : JSX.Element {
         setAnchorElUser(null);
     };
 
+    const renderSettings = () : JSX.Element => {
+        return (
+            <>
+                <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center"><Profile /></Typography>
+                </MenuItem>
+                <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center"><Login /></Typography>
+                </MenuItem>
+                <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center"><Logout /></Typography>
+                </MenuItem>
+            </>
+        );
+    }
+
     return (
         <AppBar position="static">
         <Container maxWidth="xl">
@@ -164,11 +180,15 @@ function Header() : JSX.Element {
                     open={Boolean(anchorElUser)}
                     onClose={handleCloseUserMenu}
                     >
-                    {settings.map((setting: any, index: number) => (
-                        <MenuItem key={index} onClick={handleCloseUserMenu}>
-                            <Typography textAlign="center">{setting}</Typography>
+                        <MenuItem onClick={handleCloseUserMenu}>
+                            <Profile />
                         </MenuItem>
-                    ))}
+                        <MenuItem onClick={handleCloseUserMenu}>
+                            <Login />
+                        </MenuItem>
+                        <MenuItem onClick={handleCloseUserMenu}>
+                            <Logout />
+                        </MenuItem>
                 </Menu>
             </Box>
         </Toolbar>
