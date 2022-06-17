@@ -11,13 +11,11 @@ function App() {
 //    if (isLoading) return (<div className='loading'><LoadingSpinner /></div>);
 
     return (
-        <>
           <ThemeProvider theme={darkTheme}>
                 <Provider store={store}>
                     <AppRouter />
                 </Provider>
             </ThemeProvider>
-        </>
     );
 }
 

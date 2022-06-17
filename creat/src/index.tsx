@@ -12,13 +12,13 @@ const rootElement: HTMLElement | any = document.getElementById("root");
 const root: any = createRoot(rootElement);
 
 root.render(
-      <Auth0Provider
-        domain={domain}
-        clientId={clientId}
-        redirectUri={window.location.origin}
-        >
+      // <Auth0Provider
+      //   domain={domain}
+      //   clientId={clientId}
+      //   redirectUri={window.location.origin}
+      //   >
         <App />
-      </Auth0Provider>,
+      //</Auth0Provider>,
 );
 
 reportWebVitals();
