@@ -28,7 +28,7 @@ export type DailyActivityTypeDTO = {
     duree_pause: string
 };
 
-export type ActiviteeDTO = {
+export type ActivityTypeDTO = {
     date_activite: string,
     debut: string,
     fin: string,
@@ -42,24 +42,46 @@ export type ActiviteeDTO = {
     esd: number,
     reguliere: number,
     km: number,
-    tournee_id: number,
+    tournee_id: number
 };
-/*
-export default function TableList() {
-    return (
-        <div>
-            <Typography align={'center'} variant={'h6'}>Table List Exposition :</Typography>
-            <DailyActivityList />
-        </div>
-    )
-}
-*/
+
+export type TourTypeDTO = {
+    tournee_id: number,
+    nom_tournee: number,
+    code_tournee: string,
+    lot_id: string
+};
+
+export type LotTypeDTO = {
+    lot_id: number,
+    nom_lot: string,
+    code_client: string,
+    code_interne: string,
+    debut: string,
+    fin: string,
+    tarif_id: number
+};
+
+export type TarificationTypeDTO = {
+    tarif_id: string,
+    debut: string,
+    fin: string,
+    forfait: string,
+    prevue: number,
+    distri: number,
+    avise: number,
+    poste: number,
+    relaie: number,
+    refuse: number,
+    autre: number,
+    esd: number,
+    reguliere: number,
+    km: number
+};
+
 
 export function FetchData() {
     const dispatch = useAppDispatch();
-//    const { currentDailyActivity } = useAppSelector((state) => state.dailyActivity);
-    const { currentVehiculeActivity: vehiculeActivity } = useAppSelector((state) => state.vehiculeActivity);
-//    const vehicule = useAppSelector(selectVehicules);
 
     const FetchDailyActivity = async () => {
         let response: any = await fetch('http://localhost:3002/getDailyActivity');
@@ -88,17 +110,6 @@ export function FetchData() {
         }
     };
 
-    const FetchActivity = async () => {
-        try {
-            let response = await fetch('http://localhost:3002/getVehicules');
-            const data: VehiculeTypeDTO[] = await response.json();
-            dispatch(setVehicule(data));
-        }   catch (error) {
-            console.log(error);
-        }
-    };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         FetchVehicules();
