@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Tournee Route
 app.get("/getTournee", (req,res) => {
 
-    dbAuth.query("SELECT * FROM activitee", (err, result) => {
+    dbAuth.query("SELECT * FROM tournee", (err, result) => {
         if(err) {
             console.log(err)
         } 
