@@ -7,7 +7,7 @@ type DailyActivityType = {
     vehicule_activite_id: number,
     heure_embauche: string,
     heure_debauche: string,
-    duree_pause: string
+    duree_pause: number
 };
 
 type dailyActivityState = {
