@@ -8,9 +8,12 @@ interface ActiviteJourProps {
     onStartInput: (hourStart: string) => void,
     hourEnd: string,
     onEndInput: (hourEnd: string) => void,
-    breakTime: string,
-    onBreakInput: (breakTime: string) => void,
+    breakTime: number,
+    onBreakInput: (breakTime: number) => void,
 };
+
+
+// Here is a function who compute userlist
 
 const ActiviteJour = (props: ActiviteJourProps) => {
     const info = { id: 1, msg: "Ici saisissez vos horaires." };
@@ -22,7 +25,7 @@ const ActiviteJour = (props: ActiviteJourProps) => {
         props.onEndInput(evt.target.value);
     };
     const handleBreakInput = (evt: ChangeEvent<HTMLInputElement>) => {
-        props.onBreakInput(evt.target.value);
+        props.onBreakInput(+evt.target.value);
     };
 
     return (
@@ -36,8 +39,9 @@ const ActiviteJour = (props: ActiviteJourProps) => {
                     <Typography variant="overline" display="block" >Heure de débauche :</Typography>
                     <TextField defaultValue={props.hourEnd} sx={{ boxShadow: 1, input: { color: 'blue' } }} onChange={handleEndInput} type="time"/>
                     <br />
-                    <Typography color={"red"} variant="overline" display="block" >Temps de pause :</Typography>
-                    <TextField defaultValue={props.breakTime} sx={{ boxShadow: 1, input: { color: 'orange' } }} onChange={handleBreakInput} type="text"/>
+                    <Typography color={"red"} variant="overline" display="block" >Temps de pause (mn) :</Typography>
+                    <TextField defaultValue={props.breakTime} sx={{ boxShadow: 1, input: { color: 'orange' } }} onChange={handleBreakInput} type="number"/>
+                    {/*<Typography sx={{mt: 5}} color={"orange"} variant="caption" display="block" >Vous avez travaillé {} mn</Typography>*/}
                 </Box>
             </Grid>
         </div>

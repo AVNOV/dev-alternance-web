@@ -1,50 +1,28 @@
 import { Box, TextField, Typography } from "@mui/material";
 import { ChangeEvent } from "react";
 import * as React from 'react';
-import { BoxProps } from '@mui/material/Box';
 import InformationModal from "../../Template/InformationModal";
-
-function Item(props: BoxProps) {
-    const { sx, ...other } = props;
-    return (
-        <Box
-            sx={{
-                bgcolor: 'white',
-                color: 'black',
-                p: 1,
-                m: 1,
-                pl: 1,
-                minWidth: 45,
-                mr: 2,
-                borderRadius: 2,
-                fontSize: '0.750rem',
-                fontWeight: '500',
-                ...sx,
-            }}
-            {...other}
-        />
-    );
-}
+import { Item } from "./NewActiviteController";
 
 interface SetActivityPointsProps {
-    prevu: string,
-    onPrevuInput: (prevu: string) => void,
-    distri: string,
-    onDistriInput: (distri: string) => void,
-    avise: string,
-    onAviseInput: (avise: string) => void,
-    poste: string,
-    onPosteInput: (poste: string) => void,
-    relai: string,
-    onRelaiInput: (relai: string) => void,
-    refuse: string,
-    onRefuseInput: (refuse: string) => void,
-    autre: string,
-    onAutreInput: (autre: string) => void,
-    esd: string,
-    onESDInput: (esd: string) => void,
-    reguliere: string
-    onReguliereInput: (reguliere: string) => void,
+    prevu: number,
+    onPrevuInput: (prevu: number) => void,
+    distri: number,
+    onDistriInput: (distri: number) => void,
+    avise: number,
+    onAviseInput: (avise: number) => void,
+    poste: number,
+    onPosteInput: (poste: number) => void,
+    relai: number,
+    onRelaiInput: (relai: number) => void,
+    refuse: number,
+    onRefuseInput: (refuse: number) => void,
+    autre: number,
+    onAutreInput: (autre: number) => void,
+    esd: number,
+    onESDInput: (esd: number) => void,
+    reguliere: number
+    onReguliereInput: (reguliere: number) => void,
 };
 
 const info = {id: 1, msg: "Saisie du nombre de points de livraison et du nombre de ramasse."};
@@ -54,31 +32,31 @@ function SetActivityPoints(props: SetActivityPointsProps) : JSX.Element {
     let ttlRms: number = +props.esd + +props.reguliere;
 
     const handleSetPrevu = (evt: ChangeEvent<HTMLInputElement>) => {
-        props.onPrevuInput(evt.target.value);
+        props.onPrevuInput(+evt.target.value);
     }
     const handleSetDistri = (evt: ChangeEvent<HTMLInputElement>) => {
-        props.onDistriInput(evt.target.value);
+        props.onDistriInput(+evt.target.value);
     }
     const handleSetAvise = (evt: ChangeEvent<HTMLInputElement>) => {
-        props.onAviseInput(evt.target.value);
+        props.onAviseInput(+evt.target.value);
     }
     const handleSetPoste = (evt: ChangeEvent<HTMLInputElement>) => {
-        props.onPosteInput(evt.target.value);
+        props.onPosteInput(+evt.target.value);
     }
     const handleSetRelai = (evt: ChangeEvent<HTMLInputElement>) => {
-        props.onRelaiInput(evt.target.value);
+        props.onRelaiInput(+evt.target.value);
     }
     const handleSetRefuse = (evt: ChangeEvent<HTMLInputElement>) => {
-        props.onRefuseInput(evt.target.value);
+        props.onRefuseInput(+evt.target.value);
     }
     const handleSetAutre = (evt: ChangeEvent<HTMLInputElement>) => {
-        props.onAutreInput(evt.target.value);
+        props.onAutreInput(+evt.target.value);
     }
     const handleSetESD = (evt: ChangeEvent<HTMLInputElement>) => {
-        props.onESDInput(evt.target.value);
+        props.onESDInput(+evt.target.value);
     }
     const handleSetReguliere = (evt: ChangeEvent<HTMLInputElement>) => {
-        props.onReguliereInput(evt.target.value);
+        props.onReguliereInput(+evt.target.value);
     }
 
     return (

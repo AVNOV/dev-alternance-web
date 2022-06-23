@@ -1,56 +1,82 @@
-import { Box, Button, Card, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
+import { Item as ItemRecap } from "./NewActiviteController";
 
 interface SummaryProps {
-    hourStart: string,
-    hourEnd: string,
-    breakTime: string,
-
-    immat: string,
-    kmStart: string,
-    kmEnd: string,
-
-    codeTournee: string,
-    codeLot: string,
-
-    prevu: string,
-    distri: string,
-    avise: string,
-    poste: string,
-    relai: string,
-    refuse: string,
-    autre: string,
-    esd: string,
-    reguliere: string
+    recap: {
+        hourstart: string,
+        hourend: string,
+        breaktime: number,
+        
+        immat: string,
+        kmstart: number,
+        kmend: number,
+    
+        codetournee: string,
+        codelot: string,
+    
+        prevu: number,
+        distri: number,
+        avise: number,
+        poste: number,
+        relai: number,
+        refuse: number,
+        autre: number,
+        esd: number,
+        reguliere: number
+    },
 };
 
 function Summary(props: SummaryProps) : JSX.Element {
+
+    console.log(props.recap);
+    console.log(props.recap.hourstart, props.recap.hourend, props.recap.breaktime, props.recap.immat, props.recap.kmstart, props.recap.kmend, props.recap.codetournee, props.recap.codelot, props.recap.prevu, props.recap.distri, props.recap.avise, props.recap.poste, props.recap.relai, props.recap.refuse, props.recap.autre, props.recap.esd, props.recap.reguliere);
+
     return (
         <div>
             <Grid container justifyContent={"center"}>
-                <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)' }}>
-                    <Button>{props.hourStart}</Button>
-                    <Typography variant="overline" display="block" >{+props?.hourStart}</Typography>
-                    <Typography variant="overline" display="block" >{+props?.hourEnd}</Typography>
-                    <Typography variant="overline" display="block" >{+props?.breakTime}</Typography>
+                <Box>
+                    <Typography variant="button" display="block" ><strong><u>Récapitulatif des saisies du formulaire</u></strong></Typography>
+                </Box>
+            </Grid>
+            <Grid container justifyContent={"center"}>
 
-                    
+                <Box sx={{ mt: 4, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}>
+                    <ItemRecap>
+                        <Typography variant="body1" display="block" >{props.recap.hourstart}</Typography>
+                    </ItemRecap>
+                    <ItemRecap>
+                        <Typography variant="body1" display="block" >{props.recap.hourend}</Typography>
+                    </ItemRecap>
+                        <Typography variant="body1" display="block" >{props.recap.breaktime}</Typography>
+                    <ItemRecap>
+                        <Typography variant="body1" display="block" >{props.recap.immat}</Typography>
+                    </ItemRecap>
+                        <Typography variant="body1" display="block" >{props.recap.kmstart}</Typography>
 
-                    <Typography variant="overline" display="block" >{+props.immat}</Typography>
-                    <Typography variant="overline" display="block" >{+props.kmStart}</Typography>
-                    <Typography variant="overline" display="block" >{+props.kmEnd}</Typography>
+                        <Typography variant="body1" display="block" >{props.recap.kmend}</Typography>
 
-                    <Typography variant="overline" display="block" >{+props.codeTournee}</Typography>
-                    <Typography variant="overline" display="block" >{+props.codeLot}</Typography>
+                        <Typography variant="body1" display="block" >{props.recap.codetournee}</Typography>
 
-                    <Typography variant="overline" display="block" >{+props.prevu}</Typography>
-                    <Typography variant="overline" display="block" >{+props.distri}</Typography>
-                    <Typography variant="overline" display="block" >{+props.avise}</Typography>
-                    <Typography variant="overline" display="block" >{+props.poste}</Typography>
-                    <Typography variant="overline" display="block" >{+props.relai}</Typography>
-                    <Typography variant="overline" display="block" >{+props.refuse}</Typography>
-                    <Typography variant="overline" display="block" >{+props.autre}</Typography>
-                    <Typography variant="overline" display="block" >{+props.esd}</Typography>
-                    <Typography variant="overline" display="block" >{+props.reguliere}</Typography>
+                        <Typography variant="body1" display="block" >{props.recap.codelot}</Typography>
+
+                        <Typography variant="body1" display="block" >{props.recap.prevu}</Typography>
+
+                        <Typography variant="body1" display="block" >{props.recap.distri}</Typography>
+
+                        <Typography variant="body1" display="block" >{props.recap.avise}</Typography>
+
+                        <Typography variant="body1" display="block" >{props.recap.poste}</Typography>
+
+                        <Typography variant="body1" display="block" >{props.recap.relai}</Typography>
+
+                        <Typography variant="body1" display="block" >{props.recap.refuse}</Typography>
+
+                        <Typography variant="body1" display="block" >{props.recap.autre}</Typography>
+
+                        <Typography variant="body1" display="block" >{props.recap.esd}</Typography>
+
+                        <Typography variant="body1" display="block" >{props.recap.reguliere}</Typography>
+
                 </Box>
             </Grid>
         </div>

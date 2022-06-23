@@ -9,10 +9,10 @@ import { ChangeEvent, Fragment } from 'react';
 interface VehiculeActivityProps {
     immat: string,
     onImmatInput: (immat: string) => void,
-    kmStart: string,
-    onKmStartInput: (kmStart: string) => void,
-    kmEnd: string
-    onKmEndInput: (kmEnd: string) => void,
+    kmStart: number,
+    onKmStartInput: (kmStart: number) => void,
+    kmEnd: number
+    onKmEndInput: (kmEnd: number) => void,
 };
 
 const info = { id: 1, msg: "Selection de son immatriculation et saisie du kilométrage." };
@@ -35,10 +35,10 @@ const VehiculeActivity = (props: VehiculeActivityProps) => {
         props.onImmatInput(evt.target.value);
     }
     const handleSetKmStart = (evt: ChangeEvent<HTMLInputElement>) => {
-        props.onKmStartInput(evt.target.value);
+        props.onKmStartInput(+evt.target.value);
     };
     const handleSetKmEnd = (evt: ChangeEvent<HTMLInputElement>) => {
-        props.onKmEndInput(evt.target.value);
+        props.onKmEndInput(+evt.target.value);
     }
 
     return (
