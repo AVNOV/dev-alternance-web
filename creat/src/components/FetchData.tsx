@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../store/exploitReduxStore';
+import { useAppDispatch } from '../store/exploitReduxStore';
 import { setVehiculeActivity } from '../store/vehiculeActivitySlice';
 import { setDailyActivity } from '../store/dailyActivitySlice';
 import { setVehicule } from '../store/vehiculeSlice';
@@ -25,7 +25,7 @@ export type DailyActivityTypeDTO = {
     vehicule_activite_id: number,
     heure_embauche: string,
     heure_debauche: string,
-    duree_pause: string
+    duree_pause: number
 };
 
 export type ActivityTypeDTO = {

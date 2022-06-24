@@ -24,7 +24,7 @@ function LandingPage() {
                 </Box>
             </Grid>
             <Grid container justifyContent={"center"}>
-                <Button sx={{mt: 5, border: "2px solid grey" }} variant= "contained" onClick={handleNewActivity} >Nouvelle activité</Button>
+                <Button sx={{mt: 5, border: "2px solid grey" }} variant="contained" onClick={handleNewActivity} >Nouvelle activité</Button>
             </Grid>
         </div>
     );
