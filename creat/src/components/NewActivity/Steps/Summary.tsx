@@ -1,5 +1,24 @@
-import { Box, Grid, Typography } from "@mui/material";
-import { Item as ItemRecap } from "./NewActiviteController";
+import { Box, BoxProps, Grid, Typography } from "@mui/material";
+
+export function ItemRecap(props: BoxProps) {
+    const { sx, ...other } = props;
+    return (
+        <Box
+            sx={{
+                bgcolor: 'white',
+                color: 'black',
+                p: 1,
+                m: 1,
+                minWidth: 45,
+                borderRadius: 2,
+                fontSize: '0.750rem',
+                fontWeight: '500',
+                ...sx,
+            }}
+            {...other}
+        />
+    );
+}
 
 interface SummaryProps {
     recap: {
@@ -47,36 +66,49 @@ function Summary(props: SummaryProps) : JSX.Element {
                     <ItemRecap>
                         <Typography variant="body1" display="block" >{props.recap.hourend}</Typography>
                     </ItemRecap>
-                        <Typography variant="body1" display="block" >{props.recap.breaktime}</Typography>
                     <ItemRecap>
+                        <Typography variant="body1" display="block" >{props.recap.breaktime}</Typography>
                         <Typography variant="body1" display="block" >{props.recap.immat}</Typography>
                     </ItemRecap>
+                    <ItemRecap>
                         <Typography variant="body1" display="block" >{props.recap.kmstart}</Typography>
-
+                    </ItemRecap>
+                    <ItemRecap>
                         <Typography variant="body1" display="block" >{props.recap.kmend}</Typography>
-
+                    </ItemRecap>
+                    <ItemRecap>
                         <Typography variant="body1" display="block" >{props.recap.codetournee}</Typography>
-
+                    </ItemRecap>
+                    <ItemRecap>
                         <Typography variant="body1" display="block" >{props.recap.codelot}</Typography>
-
+                    </ItemRecap>
+                    <ItemRecap>
                         <Typography variant="body1" display="block" >{props.recap.prevu}</Typography>
-
+                    </ItemRecap>
+                    <ItemRecap>
                         <Typography variant="body1" display="block" >{props.recap.distri}</Typography>
-
+                    </ItemRecap>
+                    <ItemRecap>
                         <Typography variant="body1" display="block" >{props.recap.avise}</Typography>
-
+                    </ItemRecap>
+                    <ItemRecap>
                         <Typography variant="body1" display="block" >{props.recap.poste}</Typography>
-
+                    </ItemRecap>
+                    <ItemRecap>
                         <Typography variant="body1" display="block" >{props.recap.relai}</Typography>
-
+                    </ItemRecap>
+                    <ItemRecap>
                         <Typography variant="body1" display="block" >{props.recap.refuse}</Typography>
-
+                    </ItemRecap>
+                    <ItemRecap>
                         <Typography variant="body1" display="block" >{props.recap.autre}</Typography>
-
+                    </ItemRecap>
+                    <ItemRecap>
                         <Typography variant="body1" display="block" >{props.recap.esd}</Typography>
-
+                    </ItemRecap>
+                    <ItemRecap>
                         <Typography variant="body1" display="block" >{props.recap.reguliere}</Typography>
-
+                    </ItemRecap>
                 </Box>
             </Grid>
         </div>

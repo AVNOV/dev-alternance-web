@@ -12,20 +12,27 @@ interface ActiviteJourProps {
     onBreakInput: (breakTime: number) => void,
 };
 
-
 // Here is a function who compute userlist
 
-const ActiviteJour = (props: ActiviteJourProps) => {
+const ActiviteJour = (
+    {
+        hourStart,
+        hourEnd,
+        breakTime,
+        onStartInput,
+        onEndInput,
+        onBreakInput 
+    }: ActiviteJourProps) => {
     const info = { id: 1, msg: "Ici saisissez vos horaires." };
 
     const handleStartInput = (evt: ChangeEvent<HTMLInputElement>) => {
-        props.onStartInput(evt.target.value);
+        onStartInput(evt.target.value);
     };
     const handleEndInput = (evt: ChangeEvent<HTMLInputElement>) => {
-        props.onEndInput(evt.target.value);
+        onEndInput(evt.target.value);
     };
     const handleBreakInput = (evt: ChangeEvent<HTMLInputElement>) => {
-        props.onBreakInput(+evt.target.value);
+        onBreakInput(+evt.target.value);
     };
 
     return (
@@ -34,13 +41,13 @@ const ActiviteJour = (props: ActiviteJourProps) => {
             <Grid container justifyContent={"center"}>
                 <Box sx={{ display: 'grid', mt: 5 }}>
                     <Typography variant="overline" display="block" >Heure d'embauche :</Typography>
-                    <TextField defaultValue={props.hourStart} sx={{ boxShadow: 1, input: { color: 'blue' } }} onChange={handleStartInput} type="time"/>
+                    <TextField value={hourStart} sx={{ boxShadow: 1, input: { color: 'blue' } }} onChange={handleStartInput} type="time"/>
                     <br />
                     <Typography variant="overline" display="block" >Heure de débauche :</Typography>
-                    <TextField defaultValue={props.hourEnd} sx={{ boxShadow: 1, input: { color: 'blue' } }} onChange={handleEndInput} type="time"/>
+                    <TextField value={hourEnd} sx={{ boxShadow: 1, input: { color: 'blue' } }} onChange={handleEndInput} type="time"/>
                     <br />
                     <Typography color={"red"} variant="overline" display="block" >Temps de pause (mn) :</Typography>
-                    <TextField defaultValue={props.breakTime} sx={{ boxShadow: 1, input: { color: 'orange' } }} onChange={handleBreakInput} type="number"/>
+                    <TextField value={breakTime} sx={{ boxShadow: 1, input: { color: 'orange' } }} onChange={handleBreakInput} type="number"/>
                     {/*<Typography sx={{mt: 5}} color={"orange"} variant="caption" display="block" >Vous avez travaillé {} mn</Typography>*/}
                 </Box>
             </Grid>
