@@ -4,6 +4,9 @@ import { useAppDispatch } from '../store/exploitReduxStore';
 import { setVehiculeActivity } from '../store/vehiculeActivitySlice';
 import { setDailyActivity } from '../store/dailyActivitySlice';
 import { setVehicule } from '../store/vehiculeSlice';
+import { setTour } from '../store/tourSlice';
+import { setLot } from '../store/lotSlice';
+
 
 export type VehiculeTypeDTO = {
     vehicule_id: number,
@@ -49,7 +52,7 @@ export type TourTypeDTO = {
     tournee_id: number,
     nom_tournee: number,
     code_tournee: string,
-    lot_id: string
+    lot_id: number
 };
 
 export type LotTypeDTO = {
@@ -79,6 +82,8 @@ export type TarificationTypeDTO = {
     km: number
 };
 
+const myHost = "http://localhost:3002/";
+
 
 export function FetchData() {
     const dispatch = useAppDispatch();
@@ -91,7 +96,6 @@ export function FetchData() {
         }
     };
     
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     const FetchVehiculesActivity = async () => {
         let response: any = await fetch('http://localhost:3002/getVehiculesActivity');
         response = await response.json();
@@ -102,7 +106,7 @@ export function FetchData() {
     
     const FetchVehicules = async () => {
         try {
-            let response = await fetch('http://localhost:3002/getVehicules');
+            let response = await fetch(myHost + 'getVehicules');
             const data: VehiculeTypeDTO[] = await response.json();
             dispatch(setVehicule(data));
         }   catch (error) {
@@ -110,6 +114,25 @@ export function FetchData() {
         }
     };
 
+    const FetchTournee = async () => {
+        try {
+            let response: any = await fetch(myHost + 'getTournee');
+            const data: TourTypeDTO[] = await response.json();
+            dispatch(setTour(data));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const FetchLot = async () => {
+        try {
+            let response: any = await fetch(myHost + 'getLots');
+            const data: LotTypeDTO[] = await response.json();
+            dispatch(setLot(data));
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     useEffect(() => {
         FetchVehicules();
@@ -121,6 +144,14 @@ export function FetchData() {
 
     useEffect(() => {
         FetchDailyActivity();
+    }, []);
+
+    useEffect(() => {
+        FetchTournee();
+    }, []);
+
+    useEffect(() => {
+        FetchLot();
     }, []);
 
     return (<></>); /*

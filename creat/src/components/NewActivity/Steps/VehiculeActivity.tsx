@@ -4,7 +4,9 @@ import { selectVehicules } from '../../../store/vehiculeSlice';
 import { Grid, InputLabel, Autocomplete, TextField, Typography } from '@mui/material';
 import InformationModal from '../../Template/InformationModal';
 import { FetchData } from '../../FetchData';
-import { ChangeEvent, ChangeEventHandler, Fragment } from 'react';
+import { ChangeEvent, Fragment } from 'react';
+
+const info = { id: 1, msg: "Selection de son immatriculation et saisie du kilométrage." };
 
 interface VehiculeActivityProps{
     immat: string,
@@ -15,8 +17,6 @@ interface VehiculeActivityProps{
     onKmEndInput: (kmEnd: string) => void,
 };
 
-const info = { id: 1, msg: "Selection de son immatriculation et saisie du kilométrage." };
-
 const VehiculeActivity = (
     {
         immat, 
@@ -25,13 +25,13 @@ const VehiculeActivity = (
         onImmatInput, 
         onKmStartInput, 
         onKmEndInput
-    }: VehiculeActivityProps) => {
+    }: VehiculeActivityProps) : JSX.Element =>  {
 
     const vehicule = useAppSelector(selectVehicules);
 
     const vehiculeImmat: string[] = vehicule.map<string>((camion) => {
         return camion.immatriculation;
-    });
+    }).sort();
 
     const distance = +kmEnd - +kmStart;
 
@@ -56,7 +56,7 @@ const VehiculeActivity = (
                         disablePortal
                         id="demo-simple-select"
                         options={vehiculeImmat}
-                        renderInput={(params) => <TextField sx={{bgcolor: "grey.200", borderRadius: 3, border: "White", input: { color: "black"}}} {...params} value={vehiculeImmat} onChange={handleSetImmat}/>}
+                        renderInput={(params) => <TextField sx={{ boxShadow: "2", bgcolor: "grey.200", borderRadius: 3, border: "White", input: { color: "black"}}} {...params} value={vehiculeImmat} onChange={handleSetImmat}/>}
                     />
                 </Box>
             </Grid>

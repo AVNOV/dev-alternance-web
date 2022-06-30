@@ -41,6 +41,7 @@ const NewActivityController = () : JSX.Element => {
         kmstart: string,
         kmend: string,
 
+        selectedCodeTournee: string,
         codetournee: string,
         codelot: string,
     
@@ -64,6 +65,7 @@ const NewActivityController = () : JSX.Element => {
         kmstart: '',
         kmend: '',
 
+        selectedCodeTournee: '',
         codetournee: '',
         codelot: '',
 
@@ -134,7 +136,7 @@ const NewActivityController = () : JSX.Element => {
     /* Set Activity Points */
     const handleSetPrevu = (prevuPts: number) => {
         setFormData({...formData, prevu:prevuPts});
-}
+    }
     const handleSetDistri = (distriPts: number) => {
         setFormData({...formData, distri:distriPts});
     }
@@ -159,6 +161,9 @@ const NewActivityController = () : JSX.Element => {
     const handleSetReguliere = (regulierePts: number) => {
         setFormData({...formData, reguliere:regulierePts});
     }
+    const handleSelectCodeTournee = (selectedCodeTournee: string) => {
+        setFormData({...formData, selectedCodeTournee});
+    }
     
     const handleSubmit = () => {
         //dispatch
@@ -170,7 +175,7 @@ const NewActivityController = () : JSX.Element => {
     
         <VehiculeActivity onImmatInput={handleSetImmat} onKmStartInput={handleSetKmStart} onKmEndInput={handleSetKmEnd} immat={formData.immat} kmStart={formData.kmstart} kmEnd={formData.kmend} />,
     
-        <SelectTournee onCodeTourneeInput={handleSetCodeTournee} onCodeLotInput={handleSetCodeLot} codeTournee={formData.codetournee} codeLot={formData.codelot} />,
+        <SelectTournee onCodeTourneeSelect={handleSelectCodeTournee} selectedCodetournee={formData.selectedCodeTournee} onCodeTourneeInput={handleSetCodeTournee} onCodeLotInput={handleSetCodeLot} codeTournee={formData.codetournee} codeLot={formData.codelot} />,
     
         <SetActivityPoints onPrevuInput={handleSetPrevu} onDistriInput={handleSetDistri} onAviseInput={handleSetAvise} onPosteInput={handleSetPoste} onRelaiInput={handleSetRelai} onRefuseInput={handleSetRefuse} onAutreInput={handleSetAutre} onESDInput={handleSetESD} onReguliereInput={handleSetReguliere} prevu={formData.prevu} distri={formData.distri} avise={formData.avise} poste={formData.poste} relai={formData.relai} refuse={formData.refuse} autre={formData.autre} esd={formData.esd} reguliere={formData.reguliere} />,
     
