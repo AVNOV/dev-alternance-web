@@ -27,8 +27,8 @@ interface SummaryProps {
         breaktime: number,
         
         immat: string,
-        kmstart: number,
-        kmend: number,
+        kmstart: string,
+        kmend: string,
     
         codetournee: string,
         codelot: string,
@@ -45,10 +45,13 @@ interface SummaryProps {
     },
 };
 
-function Summary(props: SummaryProps) : JSX.Element {
+function Summary(
+    {
+        recap
+    }: SummaryProps) : JSX.Element {
 
-    console.log(props.recap);
-    console.log(props.recap.hourstart, props.recap.hourend, props.recap.breaktime, props.recap.immat, props.recap.kmstart, props.recap.kmend, props.recap.codetournee, props.recap.codelot, props.recap.prevu, props.recap.distri, props.recap.avise, props.recap.poste, props.recap.relai, props.recap.refuse, props.recap.autre, props.recap.esd, props.recap.reguliere);
+    console.log('Big Recap' + recap);
+    console.log('Deconstruct Recap' + recap.hourstart, recap.hourend, recap.breaktime, recap.immat, recap.kmstart, recap.kmend, recap.codetournee, recap.codelot, recap.prevu, recap.distri, recap.avise, recap.poste, recap.relai, recap.refuse, recap.autre, recap.esd, recap.reguliere);
 
     return (
         <div>
@@ -61,53 +64,53 @@ function Summary(props: SummaryProps) : JSX.Element {
 
                 <Box sx={{ mt: 4, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}>
                     <ItemRecap>
-                        <Typography variant="body1" display="block" >{props.recap.hourstart}</Typography>
+                        <Typography variant="body1" display="block" >{recap.hourstart}</Typography>
                     </ItemRecap>
                     <ItemRecap>
-                        <Typography variant="body1" display="block" >{props.recap.hourend}</Typography>
+                        <Typography variant="body1" display="block" >{recap.hourend}</Typography>
                     </ItemRecap>
                     <ItemRecap>
-                        <Typography variant="body1" display="block" >{props.recap.breaktime}</Typography>
-                        <Typography variant="body1" display="block" >{props.recap.immat}</Typography>
+                        <Typography variant="body1" display="block" >{recap.breaktime}</Typography>
+                        <Typography variant="body1" display="block" >{recap.immat}</Typography>
                     </ItemRecap>
                     <ItemRecap>
-                        <Typography variant="body1" display="block" >{props.recap.kmstart}</Typography>
+                        <Typography variant="body1" display="block" >{recap.kmstart}</Typography>
                     </ItemRecap>
                     <ItemRecap>
-                        <Typography variant="body1" display="block" >{props.recap.kmend}</Typography>
+                        <Typography variant="body1" display="block" >{recap.kmend}</Typography>
                     </ItemRecap>
                     <ItemRecap>
-                        <Typography variant="body1" display="block" >{props.recap.codetournee}</Typography>
+                        <Typography variant="body1" display="block" >{recap.codetournee}</Typography>
                     </ItemRecap>
                     <ItemRecap>
-                        <Typography variant="body1" display="block" >{props.recap.codelot}</Typography>
+                        <Typography variant="body1" display="block" >{recap.codelot}</Typography>
                     </ItemRecap>
                     <ItemRecap>
-                        <Typography variant="body1" display="block" >{props.recap.prevu}</Typography>
+                        <Typography variant="body1" display="block" >{recap.prevu}</Typography>
                     </ItemRecap>
                     <ItemRecap>
-                        <Typography variant="body1" display="block" >{props.recap.distri}</Typography>
+                        <Typography variant="body1" display="block" >{recap.distri}</Typography>
                     </ItemRecap>
                     <ItemRecap>
-                        <Typography variant="body1" display="block" >{props.recap.avise}</Typography>
+                        <Typography variant="body1" display="block" >{recap.avise}</Typography>
                     </ItemRecap>
                     <ItemRecap>
-                        <Typography variant="body1" display="block" >{props.recap.poste}</Typography>
+                        <Typography variant="body1" display="block" >{recap.poste}</Typography>
                     </ItemRecap>
                     <ItemRecap>
-                        <Typography variant="body1" display="block" >{props.recap.relai}</Typography>
+                        <Typography variant="body1" display="block" >{recap.relai}</Typography>
                     </ItemRecap>
                     <ItemRecap>
-                        <Typography variant="body1" display="block" >{props.recap.refuse}</Typography>
+                        <Typography variant="body1" display="block" >{recap.refuse}</Typography>
                     </ItemRecap>
                     <ItemRecap>
-                        <Typography variant="body1" display="block" >{props.recap.autre}</Typography>
+                        <Typography variant="body1" display="block" >{recap.autre}</Typography>
                     </ItemRecap>
                     <ItemRecap>
-                        <Typography variant="body1" display="block" >{props.recap.esd}</Typography>
+                        <Typography variant="body1" display="block" >{recap.esd}</Typography>
                     </ItemRecap>
                     <ItemRecap>
-                        <Typography variant="body1" display="block" >{props.recap.reguliere}</Typography>
+                        <Typography variant="body1" display="block" >{recap.reguliere}</Typography>
                     </ItemRecap>
                 </Box>
             </Grid>
