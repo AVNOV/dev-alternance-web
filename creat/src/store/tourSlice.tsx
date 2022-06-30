@@ -6,7 +6,7 @@ type TourType = {
     tournee_id: number,
     nom_tournee: number,
     code_tournee: string,
-    lot_id: string,
+    lot_id: number,
 };
 
 type TourState = {
