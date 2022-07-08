@@ -129,6 +129,17 @@ app.get("/getTournee", (req,res) => {
     });
 });
 // Route to get tournee from id
+app.get("/getLotIdFromCodeTournee/:code_tournee", (req,res) => {
+    const code_tournee = req.params.code_tournee;
+
+    dbExploit.query("SELECT lot_id FROM tournee WHERE code_tournee LIKE ?", code_tournee, (err,result) => {
+        if(err) {
+            console.log(err)
+        }
+        res.send(result)
+    });
+});
+// Route to get lot id from tournee label
 app.get("/getTourneeFromId/:id", (req,res) => {
     const tournee_id = req.params.tournee_id;
 
