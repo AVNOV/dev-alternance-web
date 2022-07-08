@@ -4,7 +4,7 @@ import { selectVehicules } from '../../../store/vehiculeSlice';
 import { Grid, InputLabel, Autocomplete, TextField, Typography } from '@mui/material';
 import InformationModal from '../../Template/InformationModal';
 import { FetchData } from '../../FetchData';
-import { ChangeEvent, Fragment } from 'react';
+import { ChangeEvent, Fragment, useEffect } from 'react';
 
 const info = { id: 1, msg: "Selection de son immatriculation et saisie du kilométrage." };
 
@@ -43,7 +43,14 @@ const VehiculeActivity = (
     };
     const handleSetKmEnd = (evt: ChangeEvent<HTMLInputElement>) => {
         onKmEndInput(evt.target.value);
-    }
+    };
+    const handleAutoComplete = (evt: any) => {
+        onImmatInput(vehiculeImmat[+evt.target.dataset.optionIndex]);
+    };
+
+    useEffect(() => {
+    }, [immat]);
+
 
     return (
         <Fragment>
@@ -51,12 +58,15 @@ const VehiculeActivity = (
             <FetchData/>
             <Grid container justifyContent={"center"}>
                 <Box sx={{ display: 'grid', mt: 5, borderRadius: 1 }}>
-                <InputLabel sx={{ color: 'black' }} id="demo-simple-select-label">Immatriculation du vehicule :</InputLabel>
+                <InputLabel sx={{ color: 'black' }} id="select-immat">Immatriculation du vehicule :</InputLabel>
                     <Autocomplete sx={{ width: 250, color: 'black', bgcolor: "grey" }}
                         disablePortal
-                        id="demo-simple-select"
+                        onInputChange={ handleAutoComplete }
+                        id="select-immat"
                         options={vehiculeImmat}
-                        renderInput={(params) => <TextField sx={{ boxShadow: "2", bgcolor: "grey.200", borderRadius: 3, border: "White", input: { color: "black"}}} {...params} value={vehiculeImmat} onChange={handleSetImmat}/>}
+                        renderInput={(params) =>  <TextField sx={{ boxShadow: "2", bgcolor: "grey.200", 
+                        borderRadius: 3, border: "White", input: { color: "black"}}}
+                         {...params} value={immat} onChange={ handleSetImmat } />}
                     />
                 </Box>
             </Grid>

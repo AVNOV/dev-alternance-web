@@ -71,6 +71,8 @@ function Summary(
                     </ItemRecap>
                     <ItemRecap>
                         <Typography variant="body1" display="block" >{recap.breaktime}</Typography>
+                    </ItemRecap>
+                    <ItemRecap>
                         <Typography variant="body1" display="block" >{recap.immat}</Typography>
                     </ItemRecap>
                     <ItemRecap>

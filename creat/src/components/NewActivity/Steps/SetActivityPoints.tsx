@@ -1,4 +1,4 @@
-import { Box, TextField, Typography } from "@mui/material";
+import { Box, Grid, TextField, Typography } from "@mui/material";
 import { ChangeEvent } from "react";
 import * as React from 'react';
 import InformationModal from "../../Template/InformationModal";
@@ -48,6 +48,7 @@ function SetActivityPoints(
         onESDInput,
         onReguliereInput
     }: SetActivityPointsProps) : JSX.Element {
+
     let ttlPts: number = +prevu + +distri + +avise + +poste + +relai + +refuse + +autre;
     let ttlRms: number = +esd + +reguliere;
 
@@ -81,59 +82,61 @@ function SetActivityPoints(
 
     return (
         <div>
-            <InformationModal {...info}/>
-            <Typography sx={{ ml: 4}} variant="overline" display="block" ><strong><u>Points</u> :</strong></Typography>
-            <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', maxWidth: 600 }}>
-                <Item>
-                    <Typography variant="overline" display="block" >Prévue</Typography>
-                    <TextField sx={{ boxShadow: 1, input: { color: 'blue' }}} value={prevu} onChange={handleSetPrevu} type="number"/>
-                </Item>
-                <Item>
-                    <Typography variant="overline" display="block" >Distri</Typography>
-                    <TextField sx={{ boxShadow: 1, input: { color: 'blue' }}} value={distri} onChange={handleSetDistri} type="number"/>
-                </Item>
-                <Item>
-                    <Typography variant="overline" display="block" >Avisé</Typography>
-                    <TextField sx={{ boxShadow: 1, input: { color: 'blue' }}} value={avise} onChange={handleSetAvise} type="number"/>
-                </Item>
-                <Item>
-                    <Typography variant="overline" display="block" >Poste</Typography>
-                    <TextField sx={{ boxShadow: 1, input: { color: 'blue' }}} value={poste} onChange={handleSetPoste} type="number"/>
-                </Item>
-                <Item>
-                    <Typography variant="overline" display="block" >Relai</Typography>
-                    <TextField sx={{ boxShadow: 1, input: { color: 'blue' }}} value={relai} onChange={handleSetRelai} type="number"/>
-                </Item>
-                <Item>
-                    <Typography variant="overline" display="block" >Refusé</Typography>
-                    <TextField sx={{ boxShadow: 1, input: { color: 'blue' }}} value={refuse} onChange={handleSetRefuse} type="number"/>
-                </Item>
-                <Item>
-                    <Typography variant="overline" display="block" >Autre</Typography>
-                    <TextField sx={{ boxShadow: 1, input: { color: 'blue' }}} value={autre} onChange={handleSetAutre} type="number"/>
-                </Item>
-                <Item>
-                    <Typography variant="overline" display="block" >total</Typography>
-                    <Typography sx={{ fontSize: 10, color: "blue" }} variant="overline" display="block" >{ttlPts} pts</Typography>
-                </Item>
-            </Box>
-            <br />
-                <Typography sx={{ ml: 4}} variant="overline" display="block" ><strong><u>Ramasse</u> :</strong></Typography>
-                
-            <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', maxWidth: 600 }}>
-                <Item>
-                    <Typography variant="overline" display="block" >ESD</Typography>
-                    <TextField sx={{ boxShadow: 1, input: { color: 'blue' }}} value={esd} onChange={handleSetESD} type="number"/>
-                </Item>
-                <Item>
-                    <Typography variant="overline" display="block" >Regulière</Typography>
-                    <TextField sx={{ boxShadow: 1, input: { color: 'blue' }}} value={reguliere} onChange={handleSetReguliere} type="number"/>
-                </Item>
-                <Item>
-                    <Typography variant="overline" display="block" >total</Typography>
-                    <Typography sx={{ fontSize: 10, color: "blue" }} variant="overline" display="block" >{ttlRms} pts</Typography>
-                </Item>
-            </Box>
+            <Grid container justifyContent={"center"}>
+                <InformationModal {...info}/>
+                <Typography sx={{ ml: 4}} variant="overline" display="block" ><strong><u>Points</u> :</strong></Typography>
+                <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', maxWidth: 600 }}>
+                    <Item>
+                        <Typography variant="overline" display="block" >Prévue</Typography>
+                        <TextField sx={{ boxShadow: 1, input: { color: 'blue' }}} value={prevu} onChange={handleSetPrevu} type="number"/>
+                    </Item>
+                    <Item>
+                        <Typography variant="overline" display="block" >Distri</Typography>
+                        <TextField sx={{ boxShadow: 1, input: { color: 'blue' }}} value={distri} onChange={handleSetDistri} type="number"/>
+                    </Item>
+                    <Item>
+                        <Typography variant="overline" display="block" >Avisé</Typography>
+                        <TextField sx={{ boxShadow: 1, input: { color: 'blue' }}} value={avise} onChange={handleSetAvise} type="number"/>
+                    </Item>
+                    <Item>
+                        <Typography variant="overline" display="block" >Poste</Typography>
+                        <TextField sx={{ boxShadow: 1, input: { color: 'blue' }}} value={poste} onChange={handleSetPoste} type="number"/>
+                    </Item>
+                    <Item>
+                        <Typography variant="overline" display="block" >Relai</Typography>
+                        <TextField sx={{ boxShadow: 1, input: { color: 'blue' }}} value={relai} onChange={handleSetRelai} type="number"/>
+                    </Item>
+                    <Item>
+                        <Typography variant="overline" display="block" >Refusé</Typography>
+                        <TextField sx={{ boxShadow: 1, input: { color: 'blue' }}} value={refuse} onChange={handleSetRefuse} type="number"/>
+                    </Item>
+                    <Item>
+                        <Typography variant="overline" display="block" >Autre</Typography>
+                        <TextField sx={{ boxShadow: 1, input: { color: 'blue' }}} value={autre} onChange={handleSetAutre} type="number"/>
+                    </Item>
+                    <Item>
+                        <Typography variant="overline" display="block" >total</Typography>
+                        <Typography sx={{ fontSize: 10, color: "blue" }} variant="overline" display="block" >{ttlPts} pts</Typography>
+                    </Item>
+                </Box>
+                <br />
+                    <Typography sx={{ ml: 4}} variant="overline" display="block" ><strong><u>Ramasse</u> :</strong></Typography>
+                    
+                <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', maxWidth: 600 }}>
+                    <Item>
+                        <Typography variant="overline" display="block" >ESD</Typography>
+                        <TextField sx={{ boxShadow: 1, input: { color: 'blue' }}} value={esd} onChange={handleSetESD} type="number"/>
+                    </Item>
+                    <Item>
+                        <Typography variant="overline" display="block" >Regulière</Typography>
+                        <TextField sx={{ boxShadow: 1, input: { color: 'blue' }}} value={reguliere} onChange={handleSetReguliere} type="number"/>
+                    </Item>
+                    <Item>
+                        <Typography variant="overline" display="block" >total</Typography>
+                        <Typography sx={{ fontSize: 10, color: "blue" }} variant="overline" display="block" >{ttlRms} pts</Typography>
+                    </Item>
+                </Box>
+            </Grid>
         </div>
     );  
 }

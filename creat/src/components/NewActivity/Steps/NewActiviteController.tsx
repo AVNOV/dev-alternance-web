@@ -41,7 +41,6 @@ const NewActivityController = () : JSX.Element => {
         kmstart: string,
         kmend: string,
 
-        selectedCodeTournee: string,
         codetournee: string,
         codelot: string,
     
@@ -65,7 +64,6 @@ const NewActivityController = () : JSX.Element => {
         kmstart: '',
         kmend: '',
 
-        selectedCodeTournee: '',
         codetournee: '',
         codelot: '',
 
@@ -80,106 +78,77 @@ const NewActivityController = () : JSX.Element => {
         reguliere: 0
     });
 
-    const recap = { 
-        hourstart: '',
-        hourend: '',
-        breaktime: 0,
-
-        immat: '',
-        kmstart: 0,
-        kmend: 0,
-
-        codetournee: '',
-        codelot: '',
-    
-        prevu: 0,
-        distri: 0,
-        avise: 0,
-        poste: 0,
-        relai: 0,
-        refuse: 0,
-        autre: 0,
-        esd: 0,
-        reguliere: 0
-    };
-
     /* Daily Activity */
-    const handleSetHourStart = (hourStart: string) => {
-        setFormData({...formData, hourstart:hourStart});
+    const handleSetHourStart = (hourstart: string) => {
+        setFormData({...formData, hourstart});
     };
-    const handleSetHourEnd = (hourEnd: string) => {
-        setFormData({...formData, hourend:hourEnd});
+    const handleSetHourEnd = (hourend: string) => {
+        setFormData({...formData, hourend});
     };
-    const handleSetBreak = (breakTime: number) => {
-        setFormData({...formData, breaktime:breakTime});
+    const handleSetBreak = (breaktime: number) => {
+        setFormData({...formData, breaktime});
     };
 
     /* Set Vehicule Activity */
     const handleSetImmat = (immat: string) => {
         setFormData({...formData, immat:immat});
     };
-    const handleSetKmStart = (kmStart: string) => {
-        setFormData({...formData, kmstart:kmStart});
+    const handleSetKmStart = (kmstart: string) => {
+        setFormData({...formData, kmstart});
     };
-    const handleSetKmEnd = (kmEnd: string) => {
-        setFormData({...formData, kmend:kmEnd});
+    const handleSetKmEnd = (kmend: string) => {
+        setFormData({...formData, kmend});
     };
 
     /* Select Code Tournee & lot */
-    const handleSetCodeTournee = (codeTournee: string) => {
-        setFormData({...formData, codetournee:codeTournee});
+    const handleSetCodeTournee = (codetournee: string) => {
+        setFormData({...formData, codetournee});
     }
-    const handleSetCodeLot = (codeLot: string) => {
-        setFormData({...formData, codelot:codeLot});
+    const handleSetCodeLot = (codelot: string) => {
+        setFormData({...formData, codelot});
     }
 
     /* Set Activity Points */
-    const handleSetPrevu = (prevuPts: number) => {
-        setFormData({...formData, prevu:prevuPts});
+    const handleSetPrevu = (prevu: number) => {
+        setFormData({...formData, prevu});
     }
-    const handleSetDistri = (distriPts: number) => {
-        setFormData({...formData, distri:distriPts});
+    const handleSetDistri = (distri: number) => {
+        setFormData({...formData, distri});
     }
-    const handleSetAvise = (avisePts: number) => {
-        setFormData({...formData, avise:avisePts});
+    const handleSetAvise = (avise: number) => {
+        setFormData({...formData, avise});
     }
-    const handleSetPoste = (postePts: number) => {
-        setFormData({...formData, poste:postePts});
+    const handleSetPoste = (poste: number) => {
+        setFormData({...formData, poste});
     }
-    const handleSetRelai = (relaiPts: number) => {
-        setFormData({...formData, relai:relaiPts});
+    const handleSetRelai = (relai: number) => {
+        setFormData({...formData, relai});
     }
-    const handleSetRefuse = (refusePts: number) => {
-        setFormData({...formData, refuse:refusePts});
+    const handleSetRefuse = (refuse: number) => {
+        setFormData({...formData, refuse});
     }
-    const handleSetAutre = (autrePts: number) => {
-        setFormData({...formData, autre:autrePts});
+    const handleSetAutre = (autre: number) => {
+        setFormData({...formData, autre});
     }
-    const handleSetESD = (esdPts: number) => {
-        setFormData({...formData, esd:esdPts});
+    const handleSetESD = (esd: number) => {
+        setFormData({...formData, esd});
     }
-    const handleSetReguliere = (regulierePts: number) => {
-        setFormData({...formData, reguliere:regulierePts});
-    }
-    const handleSelectCodeTournee = (selectedCodeTournee: string) => {
-        setFormData({...formData, selectedCodeTournee});
+    const handleSetReguliere = (reguliere: number) => {
+        setFormData({...formData, reguliere});
     }
     
-    const handleSubmit = () => {
-        //dispatch
-    }
-
+    console.log('FormData => ', formData);
 
     const steps = [
         <ActiviteJour onStartInput={handleSetHourStart} onEndInput={handleSetHourEnd} onBreakInput={handleSetBreak} hourStart={formData.hourstart} hourEnd={formData.hourend} breakTime={formData.breaktime} />,
     
         <VehiculeActivity onImmatInput={handleSetImmat} onKmStartInput={handleSetKmStart} onKmEndInput={handleSetKmEnd} immat={formData.immat} kmStart={formData.kmstart} kmEnd={formData.kmend} />,
     
-        <SelectTournee onCodeTourneeSelect={handleSelectCodeTournee} selectedCodetournee={formData.selectedCodeTournee} onCodeTourneeInput={handleSetCodeTournee} onCodeLotInput={handleSetCodeLot} codeTournee={formData.codetournee} codeLot={formData.codelot} />,
+        <SelectTournee onCodeTourneeInput={handleSetCodeTournee} onCodeLotInput={handleSetCodeLot} codeTournee={formData.codetournee} codeLot={formData.codelot} />,
     
         <SetActivityPoints onPrevuInput={handleSetPrevu} onDistriInput={handleSetDistri} onAviseInput={handleSetAvise} onPosteInput={handleSetPoste} onRelaiInput={handleSetRelai} onRefuseInput={handleSetRefuse} onAutreInput={handleSetAutre} onESDInput={handleSetESD} onReguliereInput={handleSetReguliere} prevu={formData.prevu} distri={formData.distri} avise={formData.avise} poste={formData.poste} relai={formData.relai} refuse={formData.refuse} autre={formData.autre} esd={formData.esd} reguliere={formData.reguliere} />,
     
-        <Summary recap={recap} />
+        <Summary recap={formData} />
     ];
 
     const handleNextStep = () => {
