@@ -3,7 +3,7 @@ const dbExploit = require('./config/dbExploit');
 const cors = require('cors');
 
 const app = express();
-const  PORT = 3002;
+const PORT = 3002;
 app.use(cors());
 app.use(express.json())
 
@@ -113,13 +113,13 @@ app.delete('/deleteLot/:id',(req,res) => {
         if(err) {
             console.log(err)
         }
-    })
-})
+    });
+});
 
 
 // TOURNEE ROUTES -----------------------------------------------------------------------
 // Route to get all Tournee
-app.get("/getTournee", (req,res) => {
+app.get("/getTour", (req,res) => {
 
     dbExploit.query("SELECT * FROM tournee", (err, result) => {
         if(err) {
@@ -129,7 +129,7 @@ app.get("/getTournee", (req,res) => {
     });
 });
 // Route to get tournee from id
-app.get("/getLotIdFromCodeTournee/:code_tournee", (req,res) => {
+app.get("/getLotIdFromTourCode/:code_tournee", (req,res) => {
     const code_tournee = req.params.code_tournee;
 
     dbExploit.query("SELECT lot_id FROM tournee WHERE code_tournee LIKE ?", code_tournee, (err,result) => {
@@ -140,7 +140,7 @@ app.get("/getLotIdFromCodeTournee/:code_tournee", (req,res) => {
     });
 });
 // Route to get lot id from tournee label
-app.get("/getTourneeFromId/:id", (req,res) => {
+app.get("/getTourFromId/:id", (req,res) => {
     const tournee_id = req.params.tournee_id;
 
     dbExploit.query("SELECT * FROM tournee WHERE tournee_id = ?", tournee_id, (err,result) => {
@@ -151,7 +151,7 @@ app.get("/getTourneeFromId/:id", (req,res) => {
     });
 });
 // Route to post new tournee
-app.post('/createTournee', (req) => {
+app.post('/createTour', (req) => {
     const tournee_id = req.body.tournee_id;
     const nom_tournee = req.body.nom_tournee;
     const code_tournee = req.body.code_tournee;
@@ -164,15 +164,15 @@ app.post('/createTournee', (req) => {
         console.log(result)
     });
 });
-app.delete('/deleteTournee/:id',(req,res) => {
+app.delete('/deleteTour/:id',(req,res) => {
     const tournee_id = req.params.tournee_id;
 
     dbExploit.query("DELETE FROM tournee WHERE id= ?", tournee_id, (err,result) => {
         if(err) {
             console.log(err)
         }
-    })
-})
+    });
+});
 
 // ACTIVITY ROUTES -----------------------------------------------------------------------
 // Route to get activity
@@ -266,7 +266,7 @@ app.post('/createDailyActivity', (req, res) => {
         }
         console.log(result)
     });
-})
+});
 // Route to delete a daily activity
 app.delete('/deleteDailyActivity/:id',(req,res) => {
     const id = req.params.id;
@@ -275,8 +275,8 @@ app.delete('/deleteDailyActivity/:id',(req,res) => {
         if(err) {
             console.log(err)
         }
-    })
-})
+    });
+});
 
 // VEHICULE ACTIVITY ROUTES -------------------------------------------------------------
 app.get("/getVehiculesActivity", (req,res) => {
@@ -312,7 +312,7 @@ app.post('/createVehiculeActivity', (req, res) => {
         }
         console.log(result)
     });   
-})
+});
 // Route to delete a vehicule activity
 app.delete('/deleteVehiculeActivity/:id',(req,res) => {
     const id = req.params.id;
@@ -321,8 +321,8 @@ app.delete('/deleteVehiculeActivity/:id',(req,res) => {
         if(err) {
             console.log(err)
         }
-    })
-})
+    });
+});
 
 // VEHICULE TABLE ROUTES ----------------------------------------------------------------
 // Route to get all vehicules from vehicule
@@ -358,7 +358,7 @@ app.post('/createVehicule', (req, res) => {
         } 
         console.log(result)
     });   
-})
+});
 // Route to get all vehicule table immatriculation
 app.get('/getImmat', (req, res) => {
     
@@ -367,8 +367,8 @@ app.get('/getImmat', (req, res) => {
             console.log(err);
         }
         res.send(result);
-    })
-})
+    });
+});
 // Route to delete a vehicule
 app.delete('/deleteVehicule/:id',(req,res) => {
     const id = req.params.id;
@@ -377,11 +377,11 @@ app.delete('/deleteVehicule/:id',(req,res) => {
         if (err) {
             console.log(err)
         }
-    })
-})
+    });
+});
 
 
 
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`)
-})
+});
